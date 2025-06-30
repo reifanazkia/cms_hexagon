@@ -1,0 +1,134 @@
+<?php
+
+use App\Http\Controllers\AboutTeamController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\CostumRegisterController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SosmedController;
+use App\Http\Controllers\ProfileSettingController;
+use App\Http\Controllers\Settings\ProfileController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\ValuesController;
+use App\Http\Controllers\VisionMissionController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
+
+// Redirect halaman utama ke login
+Route::get('/', fn() => redirect('/login'));
+
+// Registrasi manual (tanpa auto-login)
+Route::post('/register', [CostumRegisterController::class, 'store'])->middleware('guest');
+
+// Halaman login (guest only)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', fn() => view('auth.login'))->name('login');
+});
+
+// Halaman utama untuk user yang sudah login & verifikasi email
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    // Dashboard
+    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+
+
+    // About
+    Route::get('/about/main', fn() => view('about.main'))->name('about.main');
+    // Route::get('/about/teams', fn() => view('about.teams'))->name('about.teams');
+
+
+    // About Clients
+    Route::get('/about/clients', [ClientsController::class, 'index'])->name('about.clients');
+    Route::post('/about/clients', [ClientsController::class, 'store'])->name('clients.store');
+    Route::put('/about/clients/{client}', [ClientsController::class, 'update'])->name('clients.update');
+    Route::delete('/about/clients/{client}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+
+
+    Route::get('/about/teams', [AboutTeamController::class, 'index'])->name('about.teams');
+    Route::post('/about/teams', [AboutTeamController::class, 'store'])->name('teams.store');
+    Route::put('/about/teams/{id}', [AboutTeamController::class, 'update'])->name('teams.update');
+    Route::delete('/about/teams/{id}', [AboutTeamController::class, 'destroy'])->name('teams.destroy');
+
+
+    // Profile Setting Page
+    Route::get('/profile-setting', [ProfileSettingController::class, 'index'])->name('profile-setting');
+
+    // Company Address
+
+    Route::post('/profile-setting', [CompanyProfileController::class, 'store'])->name('company-profile.store');
+    Route::put('/profile-setting/{id}', [CompanyProfileController::class, 'update'])->name('company-profile.update');
+    Route::delete('/profile-setting/{id}', [CompanyProfileController::class, 'destroy'])->name('company-profile.destroy');
+
+    // Contact (Phone & Email Update)
+    Route::post('/contact/update', [ContactController::class, 'update'])->name('contact.update');
+
+    // Social Accounts (Update Only)
+    Route::put('/social-account/{socialAccount}/update', [SosmedController::class, 'update'])->name('social.update');
+
+    // User Profile (Laravel Fortify)
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+
+Route::prefix('career')->group(function () {
+    Route::get('/', [CareerController::class, 'index'])->name('career.index');
+    // Route::get('/create', [CareerController::class, 'create'])->name('career.create'); // Tambahkan ini
+    Route::post('/career', [CareerController::class, 'store'])->name('career.store');
+    Route::get('/{id}', [CareerController::class, 'show'])->name('career.show');
+    Route::get('/career/{id}/edit', [CareerController::class, 'edit'])->name('career.edit');
+    Route::put('/{id}', [CareerController::class, 'update'])->name('career.update');
+    Route::delete('/{id}', [CareerController::class, 'destroy'])->name('career.destroy');
+});
+
+//Route news
+Route::prefix('news')->group(function () {
+    Route::get('/', [NewsController::class, 'index'])->name('news.index');
+    Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+    Route::get('/{id}', [NewsController::class, 'show'])->name('news.show');
+    Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
+    Route::put('/{id}', [NewsController::class, 'update'])->name('news.update');
+    Route::delete('/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+});
+
+Route::prefix('about')->group(function () {
+    Route::get('/main', [MainController::class, 'index'])->name('about.main');
+    Route::post('/main', [MainController::class, 'update'])->name('main.update');
+
+    Route::get('/vision-mission', [VisionMissionController::class, 'index'])->name('about.vision-mission');
+    Route::post('/vision-mission/update', [VisionMissionController::class, 'update'])->name('vision-mission.update');
+
+    Route::get('/values', [ValuesController::class, 'index'])->name('about.values');
+    Route::post('/values/update-multiple', [ValuesController::class, 'updateMultiple'])->name('about.values.updateMultiple');
+    Route::post('/values/store', [ValuesController::class, 'store'])->name('about.values.store');
+    Route::delete('/values/delete/{id}', [ValuesController::class, 'destroy'])->name('about.values.delete');
+
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('about.gallery');
+    Route::post('/gallery/store', [GalleryController::class, 'store'])->name('about.gallery.store');
+    Route::post('/gallery/update/{id}', [GalleryController::class, 'update'])->name('about.gallery.update');
+    Route::delete('/gallery/delete/{id}', [GalleryController::class, 'destroy'])->name('about.gallery.delete');
+});
+
+Route::prefix('portfolio')->name('portfolio.')->group(function () {
+    Route::get('/', [PortofolioController::class, 'index'])->name('portofolio.index');
+    Route::post('/store', [PortofolioController::class, 'store'])->name('store');
+    Route::post('/update/{id}', [PortofolioController::class, 'update'])->name('update');
+    Route::get('/show/{id}', [PortofolioController::class, 'show'])->name('show');
+    Route::delete('/delete/{id}', [PortofolioController::class, 'destroy'])->name('delete');
+});
+
+Route::prefix('category')->name('category.')->group(function () {
+    Route::get('/', [CategoryController::class, 'index'])->name('index');
+    Route::post('/store', [CategoryController::class, 'store'])->name('store');
+    Route::post('/update/{id}', [CategoryController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
+});
