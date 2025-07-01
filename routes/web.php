@@ -17,6 +17,9 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ValuesController;
 use App\Http\Controllers\VisionMissionController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\MessagesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -132,3 +135,15 @@ Route::prefix('category')->name('category.')->group(function () {
     Route::post('/update/{id}', [CategoryController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
 });
+
+
+//SERVICE 
+Route::get('/services', [ServiceController::class, 'index'])->name('services.all');
+Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
+Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+
+//MESSAGES
+Route::get('/message', [MessagesController::class, 'index'])->name('message.index');
+Route::post('/message/send', [MessagesController::class, 'store'])->name('message.store');
