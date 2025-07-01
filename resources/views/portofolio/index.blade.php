@@ -29,7 +29,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Foto</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Judul</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Keterangan</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Aksi</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Actions</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -45,18 +45,18 @@
                     <td class="px-6 py-4 font-semibold text-gray-800">{{ $item->judul_porto }}</td>
                     <td class="px-6 py-4 text-sm text-gray-600">{{ Str::limit($item->ket_porto,60) }}</td>
                     <td class="px-6 py-4 text-center">
-                        <div class="flex justify-center gap-2">
+                        <div class="inline-flex gap-3">
                             <button onclick="openDetailModal({{ $item->portofolio_id }})"
                                     class="text-gray-600 hover:text-blue-800">
-                                <i class="fas fa-eye"></i> Detail
+                                <i class="fas fa-eye"></i>
                             </button>
                             <button onclick="openEditModal({{ $item->portofolio_id }})"
-                                    class="text-blue-500 hover:text-blue-700">
-                                <i class="fas fa-edit"></i> Edit
+                                    class="text-blue-600 hover:text-blue-800" title="Edit">
+                                    <i class="fas fa-pen"></i>
                             </button>
                             <button onclick="confirmDelete({{ $item->portofolio_id }})"
-                                    class="text-red-600 hover:text-red-800">
-                                <i class="fas fa-trash-alt"></i> Delete
+                                    class="text-red-500 hover:text-red-700" title="Delete">
+                                        <i class="fas fa-trash"></i>
                             </button>
                         </div>
                         <form id="delete-form-{{ $item->portofolio_id }}"

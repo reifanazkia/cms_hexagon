@@ -17,6 +17,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ValuesController;
 use App\Http\Controllers\VisionMissionController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // About
     Route::get('/about/main', fn() => view('about.main'))->name('about.main');
     // Route::get('/about/teams', fn() => view('about.teams'))->name('about.teams');
+
+
+
+    Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+
 
 
     // About Clients
@@ -131,4 +138,14 @@ Route::prefix('category')->name('category.')->group(function () {
     Route::post('/store', [CategoryController::class, 'store'])->name('store');
     Route::post('/update/{id}', [CategoryController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
+});
+
+
+
+
+Route::prefix('reviews')->group(function () {
+    Route::get('/', [ReviewController::class, 'index'])->name('review.index');
+    Route::post('/store', [ReviewController::class, 'store'])->name('review.store');
+    Route::post('/update/{id}', [ReviewController::class, 'update'])->name('review.update');
+    Route::delete('/delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
 });

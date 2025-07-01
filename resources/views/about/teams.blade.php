@@ -45,8 +45,8 @@
                             <td class="px-6 py-4 text-right space-x-2">
                                 <!-- Edit -->
                                 <button onclick="openEditModal({{ $member->id }})"
-                                    class="text-blue-600 hover:text-blue-800 text-lg transition" title="Edit">
-                                    <i class="fas fa-pen-to-square"></i>
+                                    class="text-blue-600 hover:text-blue-800" title="Edit">
+                                    <i class="fas fa-pen"></i>
                                 </button>
 
                                 <!-- Delete with SweetAlert -->
@@ -54,7 +54,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" onclick="confirmDelete({{ $member->id }})"
-                                        class="text-red-600 hover:text-red-800 text-lg transition" title="Delete">
+                                       class="text-red-500 hover:text-red-700" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

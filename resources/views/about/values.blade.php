@@ -91,7 +91,7 @@
 function addInput(containerId, type) {
     const container = document.getElementById(containerId);
     const index     = container.children.length + 1;
-    const key       = Date.now().toString(36);            // key unik
+    const key       = Date.now().toString(36); // key unik
 
     const div = document.createElement('div');
     div.className = 'group border-2 border-blue-500 rounded-xl p-4 relative mt-4';
@@ -107,7 +107,7 @@ function addInput(containerId, type) {
             <input type="hidden" name="new_values[${key}][type]" value="${type}">
             <input type="text"
                    name="new_values[${key}][value]"
-                   class="w-full border-none bg-transparent focus:outline-none text-blue-800 font-medium"
+                   class="w-full border-none bg-transparent focus:outline-none text-gray-800 font-medium"
                    placeholder="Judul|Isi value">
         </div>
     `;
@@ -140,17 +140,16 @@ function confirmDelete(url) {
 
 {{-- Toast SweetAlert untuk add / edit / delete --}}
 @if (session('success'))
-<script>
-Swal.fire({
-    icon: 'success',
-    title: 'Berhasil!',
-    text: '{{ session('success') }}',
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 2000,
-    timerProgressBar: true,
-});
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: @json(session('success')),
+                timer: 2500,
+                showConfirmButton: false
+            });
+        });
+    </script>
 @endif
 @endsection
