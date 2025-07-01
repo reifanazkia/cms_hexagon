@@ -19,6 +19,9 @@ use App\Http\Controllers\ValuesController;
 use App\Http\Controllers\VisionMissionController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\MessagesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -140,12 +143,18 @@ Route::prefix('category')->name('category.')->group(function () {
     Route::delete('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
 });
 
-
-
-
 Route::prefix('reviews')->group(function () {
     Route::get('/', [ReviewController::class, 'index'])->name('review.index');
     Route::post('/store', [ReviewController::class, 'store'])->name('review.store');
     Route::post('/update/{id}', [ReviewController::class, 'update'])->name('review.update');
     Route::delete('/delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
 });
+Route::get('/services', [ServiceController::class, 'index'])->name('services.all');
+Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
+Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+
+//MESSAGES
+Route::get('/message', [MessagesController::class, 'index'])->name('message.index');
+Route::post('/message/send', [MessagesController::class, 'store'])->name('message.store');
