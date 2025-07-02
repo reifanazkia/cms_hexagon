@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS Hexagon</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon-new.ico') }}">
 
     {{-- Load Tailwind CSS & JS via Vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.ts'])

@@ -7,20 +7,19 @@ use App\Models\FotoPorto;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class PortofolioController extends Controller
 {
-    /* GET /portfolio */
+    // GET /portfolio
     public function index()
     {
         $portfolios = Portofolio::with('photos')->orderByDesc('portofolio_id')->paginate(10);
-        $categories = Category::all();          // untuk dropdown Add / Edit
+        $categories = Category::all();
 
         return view('portofolio.index', compact('portfolios', 'categories'));
     }
 
-    /* POST /portfolio/store */
+    // POST /portfolio/store
     public function store(Request $request)
     {
         $request->validate([
@@ -31,17 +30,17 @@ class PortofolioController extends Controller
             'url_youtube'   => 'nullable|url'
         ]);
 
-        $porto = Portofolio::create($request->only([
+        $portfolio = Portofolio::create($request->only([
             'judul_porto', 'category_id', 'ket_porto', 'url_youtube'
         ]));
 
-        /* simpan seluruh foto */
+        // Simpan foto jika ada
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $file) {
-                $path = $file->store('foto_porto', 'public');   // storage/app/public/foto_porto
+                $path = $file->store('foto_porto', 'public');
                 FotoPorto::create([
-                    'nama_foto' => $path,
-                    'project_id'=> $porto->portofolio_id
+                    'nama_foto'  => $path,
+                    'project_id' => $portfolio->portofolio_id
                 ]);
             }
         }
@@ -49,35 +48,44 @@ class PortofolioController extends Controller
         return back()->with('success', 'Portfolio berhasil ditambahkan');
     }
 
-    /* GET /portfolio/show/{id} –– untuk modal Detail & Edit (JSON) */
+    // GET /portfolio/show/{id}
     public function show($id)
     {
-        return Portofolio::with('photos')->findOrFail($id);
+        $portfolio = Portofolio::with('photos')->findOrFail($id);
+        return response()->json($portfolio);
     }
 
-    /* POST /portfolio/update/{id} */
+    // POST /portfolio/update/{id}
     public function update(Request $request, $id)
     {
         $request->validate([
-            'judul_porto' => 'required|string|max:255',
-            'category_id' => 'required|integer|exists:category,category_id',
-            'ket_porto'   => 'required|string',
-            'foto.*'      => 'nullable|image|max:2048',
-            'url_youtube' => 'nullable|url'
+            'judul_porto'   => 'required|string|max:255',
+            'category_id'   => 'required|integer|exists:category,category_id',
+            'ket_porto'     => 'required|string',
+            'foto.*'        => 'nullable|image|max:2048',
+            'url_youtube'   => 'nullable|url'
         ]);
 
-        $porto = Portofolio::findOrFail($id);
-        $porto->update($request->only([
-            'judul_porto', 'category_id', 'ket_porto', 'url_youtube', 'url'
+        $portfolio = Portofolio::with('photos')->findOrFail($id);
+
+        $portfolio->update($request->only([
+            'judul_porto', 'category_id', 'ket_porto', 'url_youtube'
         ]));
 
-        /* tambah foto baru (jika ada) */
+        // Jika ada foto baru, hapus foto lama dan simpan yang baru
         if ($request->hasFile('foto')) {
+            foreach ($portfolio->photos as $photo) {
+                if (Storage::disk('public')->exists($photo->nama_foto)) {
+                    Storage::disk('public')->delete($photo->nama_foto);
+                }
+                $photo->delete();
+            }
+
             foreach ($request->file('foto') as $file) {
                 $path = $file->store('foto_porto', 'public');
                 FotoPorto::create([
-                    'nama_foto' => $path,
-                    'project_id'=> $porto->portofolio_id
+                    'nama_foto'  => $path,
+                    'project_id' => $portfolio->portofolio_id
                 ]);
             }
         }
@@ -85,18 +93,19 @@ class PortofolioController extends Controller
         return back()->with('success', 'Portfolio berhasil diperbarui');
     }
 
-    /* DELETE /portfolio/delete/{id} */
+    // DELETE /portfolio/delete/{id}
     public function destroy($id)
     {
-        $porto = Portofolio::with('photos')->findOrFail($id);
+        $portfolio = Portofolio::with('photos')->findOrFail($id);
 
-        /* hapus file-foto fisik */
-        foreach ($porto->photos as $photo) {
-            Storage::disk('public')->delete($photo->nama_foto);
+        foreach ($portfolio->photos as $photo) {
+            if (Storage::disk('public')->exists($photo->nama_foto)) {
+                Storage::disk('public')->delete($photo->nama_foto);
+            }
             $photo->delete();
         }
 
-        $porto->delete();
+        $portfolio->delete();
 
         return back()->with('success', 'Portfolio berhasil dihapus');
     }
