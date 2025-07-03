@@ -33,7 +33,7 @@
                         <tr>
                             <td class="px-6 py-4">{{ $client->name }}</td>
                             <td class="px-6 py-4">
-                                <img src="{{ asset('storage/logos/' . $client->foto_client) }}" alt="Logo"
+                                <img src="{{ asset('storage/foto_client/' . $client->foto_client) }}" alt="Logo"
                                     class="w-12 h-12 object-contain">
                             </td>
                             <td class="px-6 py-4">
@@ -82,7 +82,7 @@
                                     <div class="flex justify-center mb-6">
                                         <div class="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 overflow-hidden">
                                             <img id="editPreviewImage{{ $client->id }}"
-                                                src="{{ asset('storage/logos/' . $client->foto_client) }}" alt="Preview"
+                                                src="{{ asset('storage/foto_client/' . $client->foto_client) }}" alt="Preview"
                                                 class="object-contain w-full h-full" />
                                         </div>
                                     </div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Clients;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ClientsController extends Controller
 {
@@ -19,25 +19,30 @@ class ClientsController extends Controller
     /** Simpan client baru. */
     public function store(Request $request)
     {
-        // 1. VALIDASI
-        $validated = $request->validate([
-            'name'        => 'required|string|max:255',
-            'status'      => 'required|in:0,1,2',
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'status' => 'required|in:0,1,2',
             'foto_client' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // 2. UPLOAD LOGO
-        $fileName = Str::random(20) . '.' . $request->file('foto_client')->extension();
-        $request->file('foto_client')->storeAs('public/logos', $fileName);
+        $file = $request->file('foto_client');
+        $fileName = Str::random(20) . '.' . $file->extension();
 
-        // 3. SIMPAN DB
+        // simpan file langsung ke public/storage/foto_client
+        $destination = public_path('storage/foto_client');
+        if (!File::exists($destination)) {
+            File::makeDirectory($destination, 0755, true);
+        }
+
+        $file->move($destination, $fileName);
+
         Clients::create([
-            'name'        => $validated['name'],
-            'status'      => $validated['status'],
+            'name' => $request->name,
+            'status' => $request->status,
             'foto_client' => $fileName,
         ]);
 
-        return redirect()-> back()->with('success', 'Client berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Client berhasil ditambahkan');
     }
 
     /** Update data client. */
@@ -49,31 +54,41 @@ class ClientsController extends Controller
             'foto_client' => 'sometimes|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // ganti logo jika ada file baru
         if ($request->hasFile('foto_client')) {
-            // hapus logo lama
-            if ($client->foto_client && Storage::exists('public/logos/' . $client->foto_client)) {
-                Storage::delete('public/logos/' . $client->foto_client);
+            // Hapus file lama
+            $oldFile = public_path('storage/foto_client/' . $client->foto_client);
+            if (File::exists($oldFile)) {
+                File::delete($oldFile);
             }
-            $fileName = Str::random(20) . '.' . $request->file('foto_client')->extension();
-            $request->file('foto_client')->storeAs('public/logos', $fileName);
+
+            // Simpan file baru
+            $file = $request->file('foto_client');
+            $fileName = Str::random(20) . '.' . $file->extension();
+
+            $destination = public_path('storage/foto_client');
+            if (!File::exists($destination)) {
+                File::makeDirectory($destination, 0755, true);
+            }
+
+            $file->move($destination, $fileName);
             $validated['foto_client'] = $fileName;
         }
 
         $client->update($validated);
 
-        return redirect()-> back()->with('success', 'Client berhasil diperbarui');
+        return redirect()->back()->with('success', 'Client berhasil diperbarui');
     }
 
     /** Hapus client. */
     public function destroy(Clients $client)
     {
-        // hapus logo di storage
-        if ($client->foto_client && Storage::exists('public/logos/' . $client->foto_client)) {
-            Storage::delete('public/logos/' . $client->foto_client);
+        $file = public_path('storage/foto_client/' . $client->foto_client);
+        if (File::exists($file)) {
+            File::delete($file);
         }
+
         $client->delete();
 
-        return redirect()-> back()->with('success', 'Client berhasil dihapus');
+        return redirect()->back()->with('success', 'Client berhasil dihapus');
     }
 }

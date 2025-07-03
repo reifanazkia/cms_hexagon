@@ -92,7 +92,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::prefix('career')->group(function () {
     Route::get('/', [CareerController::class, 'index'])->name('career.index');
-    // Route::get('/create', [CareerController::class, 'create'])->name('career.create'); // Tambahkan ini
     Route::post('/career', [CareerController::class, 'store'])->name('career.store');
     Route::get('/{id}', [CareerController::class, 'show'])->name('career.show');
     Route::get('/career/{id}/edit', [CareerController::class, 'edit'])->name('career.edit');
@@ -158,3 +157,4 @@ Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('se
 //MESSAGES
 Route::get('/message', [MessagesController::class, 'index'])->name('message.index');
 Route::post('/message/send', [MessagesController::class, 'store'])->name('message.store');
+
