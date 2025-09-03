@@ -3,6 +3,16 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    <IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Tambahkan pengecualian untuk folder docs
+    RewriteCond %{REQUEST_URI} !^/docs
+
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+
     RewriteEngine On
 
     # Handle Authorization Header

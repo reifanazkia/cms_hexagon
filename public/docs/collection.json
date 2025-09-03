@@ -1,0 +1,1108 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:8000"
+        }
+    ],
+    "info": {
+        "name": "Laravel API Documentation",
+        "_postman_id": "59705a46-a51e-48aa-a2a1-4169eb1a1a43",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/user"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/generate-dummy-porto",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/generate-dummy-porto",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/generate-dummy-porto"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"message\":\"Dummy image berhasil dibuat.\",\"dummy_created\":0}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/about\/teams",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/about\/teams",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/about\/teams"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":2,\"foto_orang\":\"dpHwl2MDoemkrzQr8Rz9EHr52loxwkcNdws93io0.jpg\",\"nama_orang\":\"Reifan Azkiaa\",\"jabatan\":\"PKL\",\"link_ig\":\"reifanzzkk_\",\"link_in\":\"-\",\"link_fb\":\"-\",\"link_twt\":null,\"created_at\":\"2025-06-26T03:55:32.000000Z\",\"updated_at\":\"2025-06-26T04:05:54.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/career",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/career",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/career"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":12,\"lowong_krj\":\"Frontend Developer\",\"ket_lowong\":{\"ringkasan\":\"Sebagai Frontend Developer, Anda akan bertanggung jawab dalam merancang dan mengembangkan antarmuka pengguna yang interaktif dan responsif menggunakan framework modern seperti Vue.js. Anda akan bekerja sama secara erat dengan tim desain dan backend untuk memastikan integrasi dan performa aplikasi berjalan dengan baik. Peran ini membutuhkan perhatian terhadap detail, semangat kolaborasi, serta kemampuan menulis kode yang bersih dan terstruktur.\",\"klasifikasi\":[\"Web Developer\"],\"deskripsi\":[\"Membuka website menggunakan Vue JS. Berkolaborasi dengan tim desain. Minimal API Integration.\",\"membuat bos senang\"],\"skillsets\":[\"Vue.js, Tailwind CSS, API Integration\"],\"pengalaman\":\"1-3 tahun\",\"jam_kerja\":\"08.00 - 16.00 WIB\",\"hari_kerja\":\"Senin-Sabtu\",\"lokasi\":\"Cigugur Tengah\"},\"created_at\":\"2025-04-23T03:47:03.000000Z\",\"updated_at\":\"2025-06-25T04:52:29.000000Z\",\"tipe\":\"Full Time\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/career\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/career\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/career\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "12",
+                                    "description": "The ID of the career."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":{\"id\":12,\"lowong_krj\":\"Frontend Developer\",\"ket_lowong\":{\"ringkasan\":\"Sebagai Frontend Developer, Anda akan bertanggung jawab dalam merancang dan mengembangkan antarmuka pengguna yang interaktif dan responsif menggunakan framework modern seperti Vue.js. Anda akan bekerja sama secara erat dengan tim desain dan backend untuk memastikan integrasi dan performa aplikasi berjalan dengan baik. Peran ini membutuhkan perhatian terhadap detail, semangat kolaborasi, serta kemampuan menulis kode yang bersih dan terstruktur.\",\"klasifikasi\":[\"Web Developer\"],\"deskripsi\":[\"Membuka website menggunakan Vue JS. Berkolaborasi dengan tim desain. Minimal API Integration.\",\"membuat bos senang\"],\"skillsets\":[\"Vue.js, Tailwind CSS, API Integration\"],\"pengalaman\":\"1-3 tahun\",\"jam_kerja\":\"08.00 - 16.00 WIB\",\"hari_kerja\":\"Senin-Sabtu\",\"lokasi\":\"Cigugur Tengah\"},\"created_at\":\"2025-04-23T03:47:03.000000Z\",\"updated_at\":\"2025-06-25T04:52:29.000000Z\",\"tipe\":\"Full Time\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/category",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/category",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/category"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"category_id\":1,\"nama_category\":\"Pendidikan\",\"created_at\":null,\"updated_at\":null},{\"category_id\":2,\"nama_category\":\"politik\",\"created_at\":null,\"updated_at\":null},{\"category_id\":3,\"nama_category\":\"Digital Marketing\",\"created_at\":null,\"updated_at\":null},{\"category_id\":4,\"nama_category\":\"Web Development\",\"created_at\":null,\"updated_at\":null},{\"category_id\":5,\"nama_category\":\"speaker\",\"created_at\":null,\"updated_at\":null}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/about\/clients",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/about\/clients",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/about\/clients"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":10,\"foto_client\":\"Frame 1597883479.png\",\"created_at\":\"2025-01-17T14:37:50.000000Z\",\"updated_at\":\"2025-06-25T07:21:54.000000Z\",\"name\":\"LIPI\",\"status\":1},{\"id\":12,\"foto_client\":\"Frame 1597883494.png\",\"created_at\":\"2025-01-17T14:43:34.000000Z\",\"updated_at\":\"2025-01-17T14:43:34.000000Z\",\"name\":\"BMTI\",\"status\":1},{\"id\":15,\"foto_client\":\"Frame 1597883475.png\",\"created_at\":\"2025-01-17T14:46:46.000000Z\",\"updated_at\":\"2025-01-17T14:46:46.000000Z\",\"name\":\"Yayasan KEP\",\"status\":1},{\"id\":16,\"foto_client\":\"Frame 1597883481.png\",\"created_at\":\"2025-01-17T14:47:24.000000Z\",\"updated_at\":\"2025-01-17T14:47:24.000000Z\",\"name\":\"Tut Wuri Handayani\",\"status\":1},{\"id\":22,\"foto_client\":\"image65.webp\",\"created_at\":\"2025-04-20T18:49:29.000000Z\",\"updated_at\":\"2025-04-20T18:49:29.000000Z\",\"name\":\"smk pertiwi\",\"status\":2},{\"id\":23,\"foto_client\":\"image70.webp\",\"created_at\":\"2025-04-20T18:49:52.000000Z\",\"updated_at\":\"2025-04-20T18:49:52.000000Z\",\"name\":\"sandikta\",\"status\":2},{\"id\":24,\"foto_client\":\"image83.webp\",\"created_at\":\"2025-04-20T18:50:36.000000Z\",\"updated_at\":\"2025-04-20T18:50:36.000000Z\",\"name\":\"SMK NU HaurGeulis\",\"status\":2},{\"id\":25,\"foto_client\":\"image64.webp\",\"created_at\":\"2025-04-20T18:51:10.000000Z\",\"updated_at\":\"2025-04-20T18:51:10.000000Z\",\"name\":\"SMK As-Salam\",\"status\":2},{\"id\":26,\"foto_client\":\"image66.webp\",\"created_at\":\"2025-04-20T18:51:33.000000Z\",\"updated_at\":\"2025-06-25T07:21:31.000000Z\",\"name\":\"SMKN Puspahiang\",\"status\":2},{\"id\":27,\"foto_client\":\"image67.webp\",\"created_at\":\"2025-04-20T18:51:57.000000Z\",\"updated_at\":\"2025-04-20T18:51:57.000000Z\",\"name\":\"SMK PGRI\",\"status\":2},{\"id\":28,\"foto_client\":\"image68.webp\",\"created_at\":\"2025-04-20T18:52:15.000000Z\",\"updated_at\":\"2025-06-25T07:10:26.000000Z\",\"name\":\"SMKN 1 Widisari\",\"status\":0},{\"id\":29,\"foto_client\":\"Frame 1597883476.png\",\"created_at\":\"2025-04-20T18:56:09.000000Z\",\"updated_at\":\"2025-04-20T18:56:09.000000Z\",\"name\":\"Jabar\",\"status\":0},{\"id\":30,\"foto_client\":\"Frame 1597883499.png\",\"created_at\":\"2025-04-20T18:56:30.000000Z\",\"updated_at\":\"2025-04-20T18:56:30.000000Z\",\"name\":\"detik.com\",\"status\":0},{\"id\":31,\"foto_client\":\"Frame 1597883485.png\",\"created_at\":\"2025-04-20T18:56:44.000000Z\",\"updated_at\":\"2025-04-20T18:56:44.000000Z\",\"name\":\"Kompas\",\"status\":0},{\"id\":32,\"foto_client\":\"Frame 1597883484.png\",\"created_at\":\"2025-04-20T18:57:00.000000Z\",\"updated_at\":\"2025-04-20T18:57:00.000000Z\",\"name\":\"Tribun News\",\"status\":0},{\"id\":33,\"foto_client\":\"Frame 1597883501.png\",\"created_at\":\"2025-04-20T18:57:14.000000Z\",\"updated_at\":\"2025-04-20T18:57:14.000000Z\",\"name\":\"Koran sindo\",\"status\":0},{\"id\":34,\"foto_client\":\"Frame 1597883496.png\",\"created_at\":\"2025-04-20T18:57:28.000000Z\",\"updated_at\":\"2025-04-20T18:57:28.000000Z\",\"name\":\"Republika\",\"status\":0},{\"id\":35,\"foto_client\":\"Frame 1597883505.png\",\"created_at\":\"2025-04-20T18:57:47.000000Z\",\"updated_at\":\"2025-04-20T18:57:47.000000Z\",\"name\":\"Pojok Satu\",\"status\":0},{\"id\":36,\"foto_client\":\"Frame 1597883506.png\",\"created_at\":\"2025-04-20T18:58:11.000000Z\",\"updated_at\":\"2025-04-20T18:58:11.000000Z\",\"name\":\"Sindo Media\",\"status\":0},{\"id\":37,\"foto_client\":\"K2UwuQCESXRCbUr1155N.jpg\",\"created_at\":\"2025-04-20T18:58:40.000000Z\",\"updated_at\":\"2025-07-03T08:15:48.000000Z\",\"name\":\"Antara News\",\"status\":0}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/profile-setting",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/profile-setting",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/profile-setting"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":9,\"nama_tempat\":\"Hexagon Inc.\",\"lokasi\":\"Jl. Abdul Halim No.128, RT.01\\\/RW.3, Cigugur Tengah, Kec. Cimahi Tengah, Kota Cimahi, Jawa Barat 40522\",\"created_at\":\"2025-04-20T05:51:05.000000Z\",\"updated_at\":null}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/contact",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contact",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contact"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":1,\"notlp\":\"(+62) 812 2218 1823\",\"email\":\"contact@hexagon.co.id\",\"instagram_url\":\"https:\\\/\\\/www.instagram.com\\\/hexagoninc_\",\"youtube_url\":\"https:\\\/\\\/www.youtube.com\\\/@Hexagon-Inc\",\"facebook_url\":\"https:\\\/\\\/web.facebook.com\\\/infolokerbdg.id\\\/posts\\\/hexagon-inc-pt-hexagon-karyatama-indonesiawe-are-hiring-laravel-fullstack-develo\\\/300203526373718\\\/?_rdc=1&_rdr#\",\"linkedin_url\":\"#\",\"created_at\":null,\"updated_at\":\"2025-07-03T07:41:15.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/gallery",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":34,\"image\":\"1738797530.webp\",\"created_at\":\"2025-02-06T06:18:51.000000Z\",\"updated_at\":\"2025-02-06T06:18:51.000000Z\"},{\"id\":35,\"image\":\"1738797532.webp\",\"created_at\":\"2025-02-06T06:18:52.000000Z\",\"updated_at\":\"2025-02-06T06:18:52.000000Z\"},{\"id\":36,\"image\":\"1738797533.webp\",\"created_at\":\"2025-02-06T06:18:53.000000Z\",\"updated_at\":\"2025-02-06T06:18:53.000000Z\"},{\"id\":37,\"image\":\"1738797534.webp\",\"created_at\":\"2025-02-06T06:18:54.000000Z\",\"updated_at\":\"2025-02-06T06:18:54.000000Z\"},{\"id\":38,\"image\":\"1738742516.webp\",\"created_at\":\"2025-02-06T06:18:54.000000Z\",\"updated_at\":\"2025-02-06T06:18:54.000000Z\"},{\"id\":39,\"image\":\"1738797535.webp\",\"created_at\":\"2025-02-06T06:18:55.000000Z\",\"updated_at\":\"2025-02-06T06:18:55.000000Z\"},{\"id\":40,\"image\":\"1738797536.webp\",\"created_at\":\"2025-02-06T06:18:56.000000Z\",\"updated_at\":\"2025-02-06T06:18:56.000000Z\"},{\"id\":44,\"image\":\"1750997728_logoo.jpg\",\"created_at\":\"2025-06-27T04:15:28.000000Z\",\"updated_at\":\"2025-06-27T04:15:28.000000Z\"},{\"id\":46,\"image\":\"1750999084_WhatsApp Image 2025-05-17 at 17.06.21_ef422cd4.jpg\",\"created_at\":\"2025-06-27T04:38:04.000000Z\",\"updated_at\":\"2025-06-27T04:38:04.000000Z\"},{\"id\":48,\"image\":\"1751266142_WhatsApp Image 2025-06-30 at 13.47.22_55e988d5.jpg\",\"created_at\":\"2025-06-30T06:49:02.000000Z\",\"updated_at\":\"2025-06-30T06:49:02.000000Z\"},{\"id\":49,\"image\":\"1751523387_logoo.jpg\",\"created_at\":\"2025-07-03T06:16:11.000000Z\",\"updated_at\":\"2025-07-03T06:16:27.000000Z\"},{\"id\":50,\"image\":\"1751523371_WhatsApp Image 2025-06-30 at 13.47.22_55e988d5.jpg\",\"created_at\":\"2025-07-03T06:16:11.000000Z\",\"updated_at\":\"2025-07-03T06:16:11.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/job",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/job",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/job"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":4,\"job_id\":12,\"full_name\":\"Budi Imam Prasetyo\",\"email\":\"budiimamprsty@gmail.com\",\"phone\":\"085862989008\",\"position\":\"Frontend Developer\",\"summary\":\"Saya bisa menggunakan Vue JS\",\"resume_path\":\"0\",\"created_at\":\"2025-04-23T04:53:34.000000Z\",\"updated_at\":\"2025-04-23T04:53:34.000000Z\"},{\"id\":5,\"job_id\":12,\"full_name\":\"Budi Imam Prasetyo\",\"email\":\"budiimamprasetyo@gmail.com\",\"phone\":\"08927718281\",\"position\":\"UI\\\/UX Designer\",\"summary\":\"Saya bisa menggunakan figma, adobe XD\",\"resume_path\":\"0\",\"created_at\":\"2025-04-23T15:21:00.000000Z\",\"updated_at\":\"2025-04-23T15:21:00.000000Z\"},{\"id\":6,\"job_id\":12,\"full_name\":\"Dimas Kurniawan\",\"email\":\"dimaskurniawan2290@gmail.com\",\"phone\":\"089513990786\",\"position\":\"Frontend Developer\",\"summary\":\"Saya Dimas Kurniawan Lulusan Politeknik Negeri Bandung dengan jurusan Teknik Informatika. Memiliki minat dalam pengembangan perangkat lunak, dengan kemampuan yang kuat untuk belajar dan beradaptasi dengan teknologi dan lingkungan baru dengan cepat.\",\"resume_path\":\"0\",\"created_at\":\"2025-05-10T02:06:17.000000Z\",\"updated_at\":\"2025-05-10T02:06:17.000000Z\"},{\"id\":7,\"job_id\":12,\"full_name\":\"Dimas Kurniawan\",\"email\":\"dimaskurniawan2290@gmail.com\",\"phone\":\"089513990786\",\"position\":\"Frontend Developer\",\"summary\":\"Saya Dimas Kurniawan Lulusan Politeknik Negeri Bandung dengan jurusan Teknik Informatika. Memiliki minat dalam pengembangan perangkat lunak, dengan kemampuan yang kuat untuk belajar dan beradaptasi dengan teknologi dan lingkungan baru dengan cepat.\",\"resume_path\":\"0\",\"created_at\":\"2025-05-10T02:06:27.000000Z\",\"updated_at\":\"2025-05-10T02:06:27.000000Z\"},{\"id\":8,\"job_id\":12,\"full_name\":\"Dimas Kurniawan\",\"email\":\"dimaskurniawan2290@gmail.com\",\"phone\":\"089513990786\",\"position\":\"Frontend Developer\",\"summary\":\"Saya Dimas Kurniawan Lulusan Politeknik Negeri Bandung dengan jurusan Teknik Informatika. Memiliki minat dalam pengembangan perangkat lunak, dengan kemampuan yang kuat untuk belajar dan beradaptasi dengan teknologi dan lingkungan baru dengan cepat.\",\"resume_path\":\"0\",\"created_at\":\"2025-05-10T02:06:28.000000Z\",\"updated_at\":\"2025-05-10T02:06:28.000000Z\"},{\"id\":9,\"job_id\":12,\"full_name\":\"Dimas Kurniawan\",\"email\":\"dimaskurniawan2290@gmail.com\",\"phone\":\"089513990786\",\"position\":\"Frontend Developer\",\"summary\":\"Saya Dimas Kurniawan Lulusan Politeknik Negeri Bandung dengan jurusan Teknik Informatika. Memiliki minat dalam pengembangan perangkat lunak, dengan kemampuan yang kuat untuk belajar dan beradaptasi dengan teknologi dan lingkungan baru dengan cepat.\",\"resume_path\":\"0\",\"created_at\":\"2025-05-10T02:06:28.000000Z\",\"updated_at\":\"2025-05-10T02:06:28.000000Z\"},{\"id\":10,\"job_id\":12,\"full_name\":\"Dimas Kurniawan\",\"email\":\"dimaskurniawan2290@gmail.com\",\"phone\":\"089513990786\",\"position\":\"Frontend Developer\",\"summary\":\"Saya Dimas Kurniawan Lulusan Politeknik Negeri Bandung dengan jurusan Teknik Informatika. Memiliki minat dalam pengembangan perangkat lunak, dengan kemampuan yang kuat untuk belajar dan beradaptasi dengan teknologi dan lingkungan baru dengan cepat.\",\"resume_path\":\"0\",\"created_at\":\"2025-05-10T02:06:34.000000Z\",\"updated_at\":\"2025-05-10T02:06:34.000000Z\"},{\"id\":11,\"job_id\":12,\"full_name\":\"Dimas Kurniawan\",\"email\":\"dimaskurniawan2290@gmail.com\",\"phone\":\"089513990786\",\"position\":\"Frontend Developer\",\"summary\":\"Saya Dimas Kurniawan Lulusan Politeknik Negeri Bandung dengan jurusan Teknik Informatika. Memiliki minat dalam pengembangan perangkat lunak, dengan kemampuan yang kuat untuk belajar dan beradaptasi dengan teknologi dan lingkungan baru dengan cepat.\",\"resume_path\":\"0\",\"created_at\":\"2025-05-10T02:07:51.000000Z\",\"updated_at\":\"2025-05-10T02:07:51.000000Z\"},{\"id\":12,\"job_id\":12,\"full_name\":\"Dhirly Ramadhan\",\"email\":\"dhirly.work@gmail.com\",\"phone\":\"628979299519\",\"position\":\"Frontend Developer\",\"summary\":\"I am a passionate and detail-oriented frontend developer with expertise in React.js and TypeScript. My skill set includes advanced frontend techniques including Higher-Order Components (HOC) and Compound Component Pattern., code-splitting and lazy loading for performance optimization, and seamless API integration using tools like Axios and React Query. I have experience implementing responsive, accessible, and maintainable UI components, as well as optimizing Lighthouse scores and Core Web Vitals.\\r\\n\\r\\nVisit my portfolio: dhirly-ramadhan-portfolio-delta.vercel.app\",\"resume_path\":\"0\",\"created_at\":\"2025-05-13T21:58:01.000000Z\",\"updated_at\":\"2025-05-13T21:58:01.000000Z\"},{\"id\":13,\"job_id\":12,\"full_name\":\"Vicky Pratama Setia Mahardika\",\"email\":\"vickymahardyka76@gmail.com\",\"phone\":\"082237282128\",\"position\":\"Frontend Developer\",\"summary\":\"Saya adalah lulusan dari prodi S1 Sistem Informasi - Universitas Negeri Surabaya tahun 2024. Saya memiliki ketertarikan dalam bidang pengembangan web termasuk FrontEnd Developer. Untuk bahasa pemrograman yang sering saya gunakan yaitu JavaScript dan TypeScript.\",\"resume_path\":\"0\",\"created_at\":\"2025-05-14T18:29:16.000000Z\",\"updated_at\":\"2025-05-14T18:29:16.000000Z\"},{\"id\":14,\"job_id\":12,\"full_name\":\"andre irawan\",\"email\":\"andreirawan313@gmail.com\",\"phone\":\"087823306656\",\"position\":\"Frontend Developer\",\"summary\":\"Nama Saya Andre Irawan, di pekerjaan sebelumnya saya bertanggung jawab dalam pengembangan UI untuk aplikasi desktop (core) menggunakan angular. Saya juga bertanggung jawab dalam pembuatan dan pengembangan aplikasi mobile menggunakan flutter dan dashboard web menggunakan flutter web. Aplikasi yang saya buat adalah aplikasi pengelolaan pendapatan daerah untuk pemda. Selain itu, saya juga mengerjakan beberapa project menggunakan vue.js dan Go.\",\"resume_path\":\"0\",\"created_at\":\"2025-05-20T06:11:42.000000Z\",\"updated_at\":\"2025-05-20T06:11:42.000000Z\"},{\"id\":15,\"job_id\":12,\"full_name\":\"Miftah Iqbal Firmansyah\",\"email\":\"miftah.it2@gmail.com\",\"phone\":\"088220986156\",\"position\":\"Frontend Developer\",\"summary\":\"Halo, saya Miftah Iqbal Firmansyah, seorang Frontend Developer dengan pengalaman lebih dari 5 tahun dalam membangun antarmuka web interaktif dan responsif menggunakan framework modern seperti React.js dan Vue.js. Saya terbiasa berkolaborasi erat dengan tim desain dan backend untuk memastikan integrasi API berjalan mulus dan hasil akhir sesuai dengan kebutuhan pengguna maupun bisnis.\\r\\n\\r\\nSelama karier saya, saya telah mengembangkan berbagai aplikasi internal untuk institusi perbankan besar seperti Bank Mandiri dan Bank Syariah Indonesia, dengan fokus pada performa, keamanan, dan pengalaman pengguna. Saya juga memiliki perhatian besar terhadap detail, serta terbiasa menulis kode yang bersih dan terstruktur menggunakan teknologi seperti Tailwind CSS, Axios, dan berbagai UI Library.\\r\\n\\r\\nSaya percaya kolaborasi yang solid dan komunikasi yang jelas adalah kunci dalam menghasilkan produk digital berkualitas. Dengan semangat belajar yang tinggi dan kemampuan beradaptasi dengan cepat, saya siap memberikan kontribusi terbaik sebagai bagian dari tim Anda.\",\"resume_path\":\"0\",\"created_at\":\"2025-06-19T14:19:23.000000Z\",\"updated_at\":\"2025-06-19T14:19:23.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/about\/main",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/about\/main",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/about\/main"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":1,\"youtube_url\":\"https:\\\/\\\/www.youtube.com\\\/embed\\\/qJi7nM1U_m4?si=eOc4VPOnXI5zZxd\",\"journey_title\":\"A Legacy of Innovation and Growth\",\"journey_text_1\":\"Indonesia, Hexagon Inc. is a\\r\\n                    company that operates in\\r\\n                    the field of digital artwork and IT solutions. With a focus on education and a commitment to\\r\\n                    providing high-quality services, we have established ourselves as a leading provider in our\\r\\n                    industry.\",\"journey_text_2\":\"Starting its business in 2017 as a Strategic Business Unit of PT. Mizab Nusantara Kemilau, Hexagon\\r\\n                    Inc. has now grown into an independent company that thrives as a digital services provider. The\\r\\n                    company was reestablished in response to the growing demand in the digital industry while empowering\\r\\n                    potential and professional individuals during the pandemic situation.\",\"philosophy\":\"At Hexagon Inc., we are inspired by the bee, a creature esteemed in Islamic teachings as a special creation bestowed with wisdom (Surat An-Nahl, 68-69). Bees live with purpose, gathering from the best of nature and producing with goodness and benefit. Their loyalty, intelligence, and strength resonate with us. Just as bees always find their way home, we aim to navigate challenges with resilience and integrity, finding solutions regardless of the journey\\u2019s difficulty..\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/messages",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/messages",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/messages"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":1,\"fullName\":\"Rifa Radwa Prasetya\",\"email\":\"rifaradwa@gmail.com\",\"subject\":\"Subject 1\",\"message\":\"Looong Messages\",\"created_at\":\"2025-04-11T14:42:43.000000Z\",\"updated_at\":\"2025-04-11T14:42:43.000000Z\"},{\"id\":2,\"fullName\":\"Budi Imam Prasetyo\",\"email\":\"budimamprsty@gmail.com\",\"subject\":\"subject-2\",\"message\":\"Helow\",\"created_at\":\"2025-04-11T20:09:47.000000Z\",\"updated_at\":\"2025-04-11T20:09:47.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/news",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/news",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/news"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"news_id\":41,\"category_id\":\"Pendidikan,Teknologi\",\"judul_news\":\"Kampus Merdeka di Era Digital: Tantangan dan Peluang bagi Mahasiswa Indonesia.\",\"ket_news\":\"Program \\u201cKampus Merdeka\\u201d yang digagas oleh Kemendikbudristek terus berevolusi mengikuti tren digitalisasi. Pada semester genap 2025, tercatat 162 perguruan tinggi telah menerapkan skema kurikulum berbasis proyek, magang, dan pertukaran pelajar industri. Data PDDikti menunjukkan peningkatan partisipasi mahasiswa bidang TI dan data science sebesar 28\\u00a0% dibanding tahun sebelumnya, meski masih ada kesenjangan infrastruktur di wilayah 3T.\\r\\nBeberapa kampus, seperti Universitas Indonesia, sudah membangun laboratorium virtual reality untuk simulasi industri, sedangkan di kampus daerah masih terkendala bandwidth dan pelatihan dosen. Pemerintah menyiapkan insentif hibah IT senilai Rp\\u00a0200\\u00a0miliar untuk memperkuat konektivitas dan pelatihan digital di 50 perguruan tinggi terpilih.\",\"created_at\":\"2025-04-20T17:30:59.000000Z\",\"updated_at\":\"2025-04-21T07:44:20.000000Z\",\"url_youtube\":null},{\"news_id\":42,\"category_id\":\"Pendidikan,Teknologi\",\"judul_news\":\"Startup EduTech \\u201cBelajar Pintar\\u201d Raih Pendanaan Seri A senilai Rp\\u00a050\\u00a0M\",\"ket_news\":\"Belajar Pintar, platform edukasi digital yang diluncurkan tahun 2023, berhasil menggalang modal Seri\\u00a0A sebesar Rp\\u00a050\\u00a0miliar dari konsorsium ventura Asia Tenggara. CEO Anisa Putri menyatakan dana akan difokuskan pada pengembangan AI tutor, ekspansi ke Sumatera dan Kalimantan, serta kolaborasi dengan 500 sekolah swasta.\\r\\nFitur baru mencakup kuis adaptif berbasis machine learning dan modul video interaktif. Sejak Q1\\u00a02025, jumlah pengguna aktif naik dari 300\\u00a0ribu menjadi 450\\u00a0ribu pelajar. Belajar Pintar juga menjajaki kemitraan dengan Kementerian Agama untuk menyasar 20\\u00a0ribu madrasah.\",\"created_at\":\"2025-04-20T17:36:13.000000Z\",\"updated_at\":\"2025-04-20T17:36:13.000000Z\",\"url_youtube\":null},{\"news_id\":45,\"category_id\":\"Teknologi,Sains\",\"judul_news\":\"Peluncuran Pusat Inovasi AI di Universitas Teknologi Surabaya\",\"ket_news\":\"Universitas Teknologi Surabaya (UTS) resmi membuka AI Innovation Hub pada 18 April 2025. Didukung hibah pemerintah dan swasta senilai Rp\\u00a010\\u00a0miliar, pusat ini dilengkapi GPU high\\u2011performance, ruang kolaborasi startup, dan program inkubasi bagi mahasiswa.\\r\\nRektor UTS, Prof. Budi Santoso, menargetkan 30 startup berbasis AI lahir dalam 2\\u00a0tahun ke depan. Fokus riset meliputi otomasi manufaktur, prediksi hasil pertanian, dan analisis big data pelayanan publik.\",\"created_at\":\"2025-04-20T17:38:34.000000Z\",\"updated_at\":\"2025-04-20T17:38:34.000000Z\",\"url_youtube\":null},{\"news_id\":46,\"category_id\":\"Kesehatan,Teknologi\",\"judul_news\":\"Transformasi Digital di Sektor Kesehatan: Layanan Konsultasi IT Hexagon Karyatama\",\"ket_news\":\"PT Hexagon Karyatama Indonesia meluncurkan layanan konsultasi transformasi digital khusus sektor kesehatan. Layanan mencakup audit sistem informasi, integrasi telemedicine, dan implementasi standar HIPAA serta ISO\\u00a027001.\\r\\nMenurut Rina Mahardika, Head of IT Consulting, minat rumah sakit swasta meningkat 40\\u00a0% sejak akhir 2024. Proyek pilot pertama akan dijalankan di tiga RSU di Jawa Barat, dengan target digitalisasi rekam medis dan layanan antrian online sebelum akhir 2025.\",\"created_at\":\"2025-04-20T17:39:50.000000Z\",\"updated_at\":\"2025-04-20T17:39:50.000000Z\",\"url_youtube\":null},{\"news_id\":47,\"category_id\":\"Pendidikan,Teknologi\",\"judul_news\":\"Implementasi 5G di Sekolah Negeri: Studi Kasus SMAN\\u00a05 Bogor\",\"ket_news\":\"SMP Negeri\\u00a05 Bogor menjadi pilot project 5G di sekolah negeri, bekerja sama dengan salah satu operator telekomunikasi. Fasilitas 5G memungkinkan siswa mengakses konten pembelajaran VR dan AR tanpa lag.\\r\\nKepala Sekolah Suryani melaporkan peningkatan partisipasi praktikum sains hingga 30\\u00a0%. Tantangan utama adalah kesiapan guru dalam mengelola konten digital; pihak sekolah kini menggelar pelatihan bulanan. Pemerintah kota mendukung dengan anggaran Rp\\u00a02\\u00a0miliar untuk infrastruktur IT.\",\"created_at\":\"2025-04-20T17:41:21.000000Z\",\"updated_at\":\"2025-04-20T17:41:21.000000Z\",\"url_youtube\":null},{\"news_id\":48,\"category_id\":\"Teknologi\",\"judul_news\":\"Platform Kolaborasi Developer \\u201cCodeLink\\u201d Bantu Proyek Open Source Lokal\",\"ket_news\":\"CodeLink, platform kolaborasi kode buatan komunitas developer Indonesia, resmi rilis April 2025 setelah 2\\u00a0tahun beta. Fitur utamanya meliputi peer code review, manajemen issue, dan hosting repositori gratis.\\r\\nLebih dari 250 proyek open source telah bergabung\\u2014mulai aplikasi e\\u2011Governmen hingga sistem informasi desa. Co\\u2011founder Andi Wijaya menyatakan targetnya mencapai 1.000 proyek pada akhir 2025 dan membuka program mentoring untuk pemula.\",\"created_at\":\"2025-04-20T17:42:26.000000Z\",\"updated_at\":\"2025-04-20T17:42:26.000000Z\",\"url_youtube\":null},{\"news_id\":49,\"category_id\":\"Sains\",\"judul_news\":\"bitcoin naik\",\"ket_news\":\"hello\",\"created_at\":\"2025-04-21T07:43:43.000000Z\",\"updated_at\":\"2025-04-21T07:43:43.000000Z\",\"url_youtube\":null}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/news\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/news\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/news\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "41",
+                                    "description": "The ID of the news."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":{\"news_id\":41,\"category_id\":\"Pendidikan,Teknologi\",\"judul_news\":\"Kampus Merdeka di Era Digital: Tantangan dan Peluang bagi Mahasiswa Indonesia.\",\"ket_news\":\"Program \\u201cKampus Merdeka\\u201d yang digagas oleh Kemendikbudristek terus berevolusi mengikuti tren digitalisasi. Pada semester genap 2025, tercatat 162 perguruan tinggi telah menerapkan skema kurikulum berbasis proyek, magang, dan pertukaran pelajar industri. Data PDDikti menunjukkan peningkatan partisipasi mahasiswa bidang TI dan data science sebesar 28\\u00a0% dibanding tahun sebelumnya, meski masih ada kesenjangan infrastruktur di wilayah 3T.\\r\\nBeberapa kampus, seperti Universitas Indonesia, sudah membangun laboratorium virtual reality untuk simulasi industri, sedangkan di kampus daerah masih terkendala bandwidth dan pelatihan dosen. Pemerintah menyiapkan insentif hibah IT senilai Rp\\u00a0200\\u00a0miliar untuk memperkuat konektivitas dan pelatihan digital di 50 perguruan tinggi terpilih.\",\"created_at\":\"2025-04-20T17:30:59.000000Z\",\"updated_at\":\"2025-04-21T07:44:20.000000Z\",\"url_youtube\":null}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/portofolio",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/portofolio",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/portofolio"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"portofolio_id\":50,\"category_id\":3,\"judul_porto\":\"ULBI\",\"ket_porto\":\"We optimized digital assets and marketing campaigns to boost student registrations at ULBI through various digital platforms. This project involved digital asset analysis, pixel integration for ad tracking, content creation and optimization, ad campaign launches, and campaign evaluations to meet conversion targets.\",\"created_at\":\"2025-01-19T20:29:01.000000Z\",\"updated_at\":\"2025-01-19T20:29:01.000000Z\",\"url_youtube\":\"https:\\\/\\\/www.instagram.com\\\/infopmbunjani\\\/\",\"youtube\":null},{\"portofolio_id\":51,\"category_id\":4,\"judul_porto\":\"Smartpol Application\",\"ket_porto\":\"Smartpol is a digital service specifically designed for political campaigns, helping clients effectively manage their campaign strategies with advanced technological solutions.\",\"created_at\":\"2025-01-19T23:12:02.000000Z\",\"updated_at\":\"2025-01-19T23:12:02.000000Z\",\"url_youtube\":\"https:\\\/\\\/smartpol.info\\\/\",\"youtube\":null},{\"portofolio_id\":52,\"category_id\":4,\"judul_porto\":\"Berseka Application\",\"ket_porto\":\"Berseka is a waste management application designed to support efficient and eco-friendly waste management practices.\",\"created_at\":\"2025-01-19T23:13:50.000000Z\",\"updated_at\":\"2025-01-19T23:13:50.000000Z\",\"url_youtube\":\"https:\\\/\\\/smartpol.info\\\/\",\"youtube\":null},{\"portofolio_id\":53,\"category_id\":4,\"judul_porto\":\"Jatidiri.app\",\"ket_porto\":\"Jatidiri is a super app focused on psychology, helping users discover their potential, interests, and talents, along with providing online psychological consultation services.\",\"created_at\":\"2025-01-19T23:14:24.000000Z\",\"updated_at\":\"2025-01-19T23:14:24.000000Z\",\"url_youtube\":\"https:\\\/\\\/jatidiri.app\",\"youtube\":null},{\"portofolio_id\":54,\"category_id\":4,\"judul_porto\":\"Edutama - Aplikasi Sistem Keauangan Sekolah dan Pesantren\",\"ket_porto\":\"Edutama is a financial application designed to assist private schools, boarding schools, and other educational institutions in managing their finances more efficiently.\",\"created_at\":\"2025-01-19T23:15:06.000000Z\",\"updated_at\":\"2025-01-19T23:15:06.000000Z\",\"url_youtube\":\"https:\\\/\\\/edutama.pro\",\"youtube\":null},{\"portofolio_id\":55,\"category_id\":5,\"judul_porto\":\"KEMENKOP RI\",\"ket_porto\":\"We delivered presentations for KEMENKOP, providing valuable insights and supporting their initiatives through in-depth education and comprehensive discussions.\",\"created_at\":\"2025-01-19T23:16:26.000000Z\",\"updated_at\":\"2025-06-30T06:43:00.000000Z\",\"url_youtube\":\"https:\\\/\\\/edutama.pro\",\"youtube\":null}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/portofolio\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/portofolio\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/portofolio\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "50",
+                                    "description": "The ID of the portofolio."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":{\"portofolio_id\":50,\"category_id\":3,\"judul_porto\":\"ULBI\",\"ket_porto\":\"We optimized digital assets and marketing campaigns to boost student registrations at ULBI through various digital platforms. This project involved digital asset analysis, pixel integration for ad tracking, content creation and optimization, ad campaign launches, and campaign evaluations to meet conversion targets.\",\"created_at\":\"2025-01-19T20:29:01.000000Z\",\"updated_at\":\"2025-01-19T20:29:01.000000Z\",\"url_youtube\":\"https:\\\/\\\/www.instagram.com\\\/infopmbunjani\\\/\",\"youtube\":null}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/profile",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/profile",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/profile"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":1,\"logo\":\"ig.png\",\"nama\":\"instagram\",\"link\":\"https:\\\/\\\/www.instagram.com\\\/hexagoninc_\",\"created_at\":null,\"updated_at\":null},{\"id\":2,\"logo\":\"yt.png\",\"nama\":\"youtube\",\"link\":\"https:\\\/\\\/www.youtube.com\\\/@Hexagon-Inc\",\"created_at\":null,\"updated_at\":null},{\"id\":3,\"logo\":\"fb.png\",\"nama\":\"facebook\",\"link\":\"https:\\\/\\\/web.facebook.com\\\/infolokerbdg.id\\\/posts\\\/hex..\",\"created_at\":null,\"updated_at\":null},{\"id\":4,\"logo\":\"link.png\",\"nama\":\"linkendl\",\"link\":\"#\",\"created_at\":null,\"updated_at\":null}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/review",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/review",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/review"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":1,\"review\":\"Hexagon Karyatama Indonesia membantu transformasi digital rumah sakit kami dengan sangat profesional. Mulai dari audit sistem hingga implementasi telemedicine, semua berjalan lancar dan tepat waktu.\",\"foto\":\"https:\\\/\\\/placehold.co\\\/150?text=Dr.+Agus\",\"nama\":\"Dr. Agus Santoso\",\"dari\":\"RSU Harapan Bunda\",\"created_at\":\"2025-04-15T09:15:00.000000Z\",\"updated_at\":\"2025-04-15T09:15:00.000000Z\"},{\"id\":2,\"review\":\"Tim Hexagon tidak hanya tanggap, tetapi juga proaktif dalam memberikan solusi IT yang sesuai kebutuhan industri manufaktur kami. Hasilnya, efisiensi produksi meningkat hingga 25\\u00a0%.\",\"foto\":\"https:\\\/\\\/placehold.co\\\/150?text=Ibu+Rina\",\"nama\":\"Ibu Rina Maharani\",\"dari\":\"PT. Prima Manufacturing\",\"created_at\":\"2025-04-16T11:30:00.000000Z\",\"updated_at\":\"2025-04-16T11:30:00.000000Z\"},{\"id\":3,\"review\":\"Implementasi sistem keamanan data dan backup berbasis cloud dari Hexagon Karyatama sangat membantu kami menjaga kontinuitas bisnis. Support-nya cepat dan dokumentasinya lengkap.\",\"foto\":\"https:\\\/\\\/placehold.co\\\/150?text=Bapak+Arif\",\"nama\":\"Bapak Arif Nugroho\",\"dari\":\"PT. Global Finance\",\"created_at\":\"2025-04-17T14:45:00.000000Z\",\"updated_at\":\"2025-07-03T06:24:27.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/service",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/service",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/service"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":1,\"title\":\"The Right Solution for Your Business\",\"subtitle\":\"We understand that every business has unique needs. That's why our services are flexible and tailored to align with your specific business goals.\",\"created_at\":\"2025-02-03T09:51:57.000000Z\",\"updated_at\":\"2025-02-03T09:51:57.000000Z\"},{\"id\":2,\"title\":\"Latest Technology, Best Solutions\",\"subtitle\":\"We integrate cutting-edge technology into every service to deliver optimal, effective, and always up-to-date results.\",\"created_at\":\"2025-02-03T10:10:51.000000Z\",\"updated_at\":\"2025-02-03T10:10:51.000000Z\"},{\"id\":3,\"title\":\"Always Ahead Approach\",\"subtitle\":\"We don\\u2019t just wait for opportunities\\u2014we proactively seek them and address challenges to ensure your business stays one step ahead.\",\"created_at\":\"2025-02-03T10:10:52.000000Z\",\"updated_at\":\"2025-02-03T10:10:52.000000Z\"},{\"id\":4,\"title\":\"Efficient and Affordable\",\"subtitle\":\"We offer high-quality solutions at reasonable and transparent prices, providing the best value without compromising on quality.\",\"created_at\":\"2025-02-03T10:10:54.000000Z\",\"updated_at\":\"2025-02-03T10:10:54.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/value",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/value",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/value"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":1,\"type\":1,\"value\":\"Learn|There is nothing more expert than a learner.\",\"created_at\":\"2024-12-28T09:20:56.000000Z\",\"updated_at\":\"2025-07-01T04:10:05.000000Z\"},{\"id\":2,\"type\":2,\"value\":\"Think good|Think good, make a bright idea, give a solution\",\"created_at\":\"2024-12-28T09:20:58.000000Z\",\"updated_at\":\"2025-07-01T04:10:05.000000Z\"},{\"id\":3,\"type\":1,\"value\":\"Bright|We Know the way, the path and the strategy, give the solution.\",\"created_at\":\"2024-12-28T09:21:41.000000Z\",\"updated_at\":\"2025-07-01T04:10:05.000000Z\"},{\"id\":4,\"type\":2,\"value\":\"Do Better|Do better, learn more and more, update and upgrade, be the best version of yours\",\"created_at\":\"2024-12-28T09:21:42.000000Z\",\"updated_at\":\"2025-07-01T04:10:05.000000Z\"},{\"id\":5,\"type\":1,\"value\":\"Idea|Thinking it the highest art, creativity is the way, innovation is the result.\",\"created_at\":\"2024-12-28T09:29:30.000000Z\",\"updated_at\":\"2025-07-01T04:10:05.000000Z\"},{\"id\":6,\"type\":2,\"value\":\"Give the Best|Everything that happens is the best\",\"created_at\":\"2024-12-28T09:29:31.000000Z\",\"updated_at\":\"2025-07-01T04:10:05.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/vision",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/vision",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/vision"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"data\":[{\"id\":1,\"type\":1,\"value\":\"Our Vision is to be the leading provider of digital artwork and IT solutions in the industry. We strive to be at the forefront of innovation and to consistently exceed our clients expectations\",\"created_at\":\"2024-12-27T09:59:04.000000Z\",\"updated_at\":\"2025-06-11T16:11:26.000000Z\"},{\"id\":25,\"type\":2,\"value\":\"There is a belief that in order to grow a business, you have to be ruthless. But we believe there is a better way to grow. One where what is good for profits is also good for customers. We believe that business can grow with integrity and succeed with a sincere soul. That's why we create education applications and services, and communities that unite ecosystems to help businesses grow better every day..\",\"created_at\":\"2025-01-17T08:52:57.000000Z\",\"updated_at\":\"2025-07-01T04:02:45.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
