@@ -8,14 +8,43 @@ use Illuminate\Http\Request;
 
 class ApiAboutTeamController extends Controller
 {
-    public function index()
+    /**
+     * Tampilkan semua anggota tim
+     */
+    public function index(Request $request)
     {
-        $team = AboutTeam::all();
+        $search = $request->input('search');
+
+        $teams = AboutTeam::when($search, function ($q) use ($search) {
+                $q->where('nama_orang', 'like', "%$search%")
+                  ->orWhere('jabatan', 'like', "%$search%");
+            })
+            ->latest()
+            ->get();
 
         return response()->json([
-            'status' => 'success',
-            'data' => $team
+            'success' => true,
+            'data' => $teams
+        ]);
+    }
 
+    /**
+     * Tampilkan detail anggota tim
+     */
+    public function show($id)
+    {
+        $team = AboutTeam::find($id);
+
+        if (!$team) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data anggota tim tidak ditemukan'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $team
         ]);
     }
 }
