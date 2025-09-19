@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DetailPricingController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SosmedController;
@@ -21,7 +22,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\MessagesController;
-
+use App\Http\Controllers\PricingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -157,4 +158,23 @@ Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('se
 //MESSAGES
 Route::get('/message', [MessagesController::class, 'index'])->name('message.index');
 Route::post('/message/send', [MessagesController::class, 'store'])->name('message.store');
+
+// routes/web.php
+
+// Pricing Routes
+Route::prefix('pricing')->name('pricing.')->group(function () {
+    Route::get('/', [PricingController::class, 'index'])->name('index');
+    Route::post('/store', [PricingController::class, 'store'])->name('store');
+    Route::get('/{id}', [PricingController::class, 'show'])->name('show');
+    Route::put('/{id}', [PricingController::class, 'update'])->name('update');
+    Route::delete('/{id}', [PricingController::class, 'destroy'])->name('destroy');
+
+});
+
+Route::prefix('detail-pricings')->name('detail-pricings.')->group(function () {
+    Route::get('/', [DetailPricingController::class, 'index'])->name('index');
+    Route::post('/', [DetailPricingController::class, 'store'])->name('store');
+    Route::put('/{id}', [DetailPricingController::class, 'update'])->name('update');
+    Route::delete('/{id}', [DetailPricingController::class, 'destroy'])->name('destroy');
+});
 
