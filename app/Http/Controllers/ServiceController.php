@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
-use App\models\service;
+
 
 class ServiceController extends Controller
 {
     public function index()
     {
-        $benefits = service::all(); // ambil data dari tabel 'benefits'
+        $benefits = Service::all(); // ambil data dari tabel 'benefits'
         return view('service.service', compact('benefits')); // kirim ke blade
     }
 
@@ -17,7 +18,7 @@ class ServiceController extends Controller
     public function store(Request $request)
 {
     foreach ($request->input('benefits', []) as $benefit) {
-        service::create([
+        Service::create([
             'title' => $benefit['title'],
             'subtitle' => $benefit['subtitle'],
         ]);
@@ -34,7 +35,7 @@ class ServiceController extends Controller
 
     public function destroy($id)
     {
-        $benefit = service::findOrFail($id);
+        $benefit = Service::findOrFail($id);
         $benefit->delete();
 
         return redirect()->route('services.all')->with('success', 'Benefit deleted successfully.');
