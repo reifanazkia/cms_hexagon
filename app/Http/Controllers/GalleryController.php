@@ -4,68 +4,89 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
     public function index()
     {
-        $galleries = Gallery::all();
+        $galleries = Gallery::orderBy('created_at', 'desc')->get();
         return view('about.gallery', compact('galleries'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'image.*' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image.*' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ], [
+            'image.*.required' => 'Pilih minimal satu gambar.',
+            'image.*.image'    => 'File harus berupa gambar.',
+            'image.*.mimes'    => 'Format gambar harus jpg, jpeg, png, atau webp.',
+            'image.*.max'      => 'Ukuran gambar maksimal 5MB.',
         ]);
 
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $file) {
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('gallery'), $filename);
+                // simpan ke storage/app/public/gallery
+                $filePath = $file->store('team', 'public');
 
-                Gallery::create(['image' => $filename]);
+                // simpan path ke DB
+                Gallery::create([
+                    'image' => $filePath
+                ]);
             }
+
+            return back()->with('status', 'Berhasil menambahkan gambar.');
         }
 
-        return back()->with('status', 'Gambar berhasil ditambahkan.');
+        return back()->withErrors(['image' => 'Tidak ada gambar yang dipilih.']);
     }
 
     public function update(Request $request, $id)
     {
-        $gallery = Gallery::findOrFail($id);
-
         $request->validate([
-            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ], [
+            'image.required' => 'Pilih gambar untuk diupdate.',
+            'image.image'    => 'File harus berupa gambar.',
+            'image.mimes'    => 'Format gambar harus jpg, jpeg, png, atau webp.',
+            'image.max'      => 'Ukuran gambar maksimal 5MB.',
         ]);
 
-        $oldPath = public_path('gallery/' . $gallery->image);
-        if (File::exists($oldPath)) {
-            File::delete($oldPath);
+        $gallery = Gallery::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            // hapus file lama kalau ada
+            if ($gallery->image && Storage::disk('public')->exists($gallery->image)) {
+                Storage::disk('public')->delete($gallery->image);
+            }
+
+            // upload file baru
+            $filePath = $request->file('image')->store('team', 'public');
+
+            // update DB
+            $gallery->update([
+                'image' => $filePath
+            ]);
+
+            return back()->with('status', 'Gambar berhasil diperbarui.');
         }
 
-        $filename = time() . '_' . $request->file('image')->getClientOriginalName();
-        $request->file('image')->move(public_path('gallery'), $filename);
-
-        $gallery->update(['image' => $filename]);
-
-        return back()->with('status', 'Gambar berhasil diperbarui.');
+        return back()->withErrors(['image' => 'Gagal menyimpan gambar baru.']);
     }
 
     public function destroy($id)
     {
         $gallery = Gallery::findOrFail($id);
 
-        // Hapus file dari folder public/gallery
-        $filePath = public_path('gallery/' . $gallery->image);
-        if (File::exists($filePath)) {
-            File::delete($filePath);
+        // hapus file dari storage kalau ada
+        if ($gallery->image && Storage::disk('public')->exists($gallery->image)) {
+            Storage::disk('public')->delete($gallery->image);
         }
 
-        // Hapus data dari database
+        // hapus record dari DB
         $gallery->delete();
 
-        return redirect()->back()->with('status', 'Gambar berhasil dihapus.');
+        return back()->with('status', 'Gambar berhasil dihapus.');
     }
 }

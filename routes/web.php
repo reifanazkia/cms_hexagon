@@ -128,12 +128,13 @@ Route::prefix('about')->group(function () {
     Route::delete('/gallery/delete/{id}', [GalleryController::class, 'destroy'])->name('about.gallery.delete');
 });
 
-Route::prefix('portfolio')->name('portfolio.')->group(function () {
-    Route::get('/', [PortofolioController::class, 'index'])->name('portofolio.index');
+Route::prefix('portofolio')->name('portofolio.')->group(function () {
+    Route::get('/', [PortofolioController::class, 'index'])->name('index');
     Route::post('/store', [PortofolioController::class, 'store'])->name('store');
-    Route::post('/update/{id}', [PortofolioController::class, 'update'])->name('update');
+    Route::put('/update/{id}', [PortofolioController::class, 'update'])->name('update');
     Route::get('/show/{id}', [PortofolioController::class, 'show'])->name('show');
     Route::delete('/delete/{id}', [PortofolioController::class, 'destroy'])->name('delete');
+    Route::delete('/delete-photo/{id}', [PortofolioController::class, 'deletePhoto'])->name('deletePhoto');
 });
 
 Route::prefix('category')->name('category.')->group(function () {

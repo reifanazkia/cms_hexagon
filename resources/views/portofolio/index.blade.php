@@ -36,13 +36,13 @@
                     @foreach ($portfolios as $item)
                         <tr>
                             <td class="px-6 py-4">
+
                                 @if ($item->photos->count())
-                                    <div class="flex gap-1">
-                                        @foreach ($item->photos as $photo)
-                                            <img src="{{ asset('storage/' . $photo->nama_foto) }}"
-                                                class="w-12 h-12 rounded object-cover">
-                                        @endforeach
-                                    </div>
+                                  @php
+                                $filePath = 'storage/' .$item->photos->first()->nama_foto;
+                                @endphp
+                                    <img src="{{ asset($filePath) }}" width="150"
+                                        class="w-12 h-12 rounded object-cover">
                                 @else
                                     <span class="italic text-gray-400">No Image</span>
                                 @endif
@@ -52,21 +52,21 @@
                             <td class="px-6 py-4 text-sm text-gray-600">{{ Str::limit($item->ket_porto, 60) }}</td>
                             <td class="px-6 py-4 text-center">
                                 <div class="inline-flex gap-3">
-                                    <button onclick="openDetailModal({{ $item->portofolio_id }})"
-                                        class="text-gray-600 hover:text-blue-800">
+                                    <button type="button" onclick="openDetailModal({{ $item->portofolio_id }})"
+                                        class="text-gray-600 hover:text-blue-800" title="Detail">
                                         <i class="fas fa-eye"></i>
                                     </button>
-                                    <button onclick="openEditModal({{ $item->portofolio_id }})"
+                                    <button type="button" onclick="openEditModal({{ $item->portofolio_id }})"
                                         class="text-blue-600 hover:text-blue-800" title="Edit">
                                         <i class="fas fa-pen"></i>
                                     </button>
-                                    <button onclick="confirmDelete({{ $item->portofolio_id }})"
+                                    <button type="button" onclick="confirmDelete({{ $item->portofolio_id }})"
                                         class="text-red-500 hover:text-red-700" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
                                 <form id="delete-form-{{ $item->portofolio_id }}"
-                                    action="{{ route('portfolio.delete', $item->portofolio_id) }}" method="POST"
+                                    action="{{ route('portofolio.delete', $item->portofolio_id) }}" method="POST"
                                     class="hidden">
                                     @csrf @method('DELETE')
                                 </form>
@@ -84,7 +84,7 @@
     <div id="addModal" class="modal fixed inset-0 z-50 bg-black/40 justify-center items-center">
         <div class="bg-white max-w-5xl w-full rounded-lg shadow p-8 overflow-y-auto max-h-[90vh]">
             <h2 class="text-xl font-bold mb-4">Add New Portfolio</h2>
-            <form action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('portofolio.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="grid md:grid-cols-2 gap-4">
                     <!-- drag area -->
@@ -92,12 +92,12 @@
                         <label class="block font-medium mb-1">Foto</label>
                         <div id="addDrop" class="drop-zone">
                             <i class="fas fa-cloud-upload-alt text-4xl"></i>
-                            <span>Drag & drop atau klik</span>
-                            <small class="text-xs">(PNG/JPG max 2 MB)</small>
-                            <input id="addInput" type="file" name="foto[]" multiple
+                            <span>Drag & drop atau klik</span>
+                            <small class="text-xs">(PNG/JPG max 2 MB)</small>
+                            <input id="addInput" type="file" name="foto"
                                 class="absolute inset-0 opacity-0 cursor-pointer">
                         </div>
-                        <div id="addPreview" class="flex gap-2 mt-2 overflow-x-auto"></div>
+                        <div id="addPreview" class="mt-2"></div>
                     </div>
 
                     <!-- kolom input -->
@@ -139,17 +139,18 @@
             <h2 class="text-xl font-bold mb-4">Edit Portfolio</h2>
             <form id="editForm" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="grid md:grid-cols-2 gap-4">
                     <!-- drag area -->
                     <div>
                         <label class="block font-medium mb-1">Foto Baru</label>
                         <div id="editDrop" class="drop-zone">
                             <i class="fas fa-cloud-upload-alt text-4xl"></i>
-                            <span>Drag & drop atau klik</span>
-                            <input id="editInput" type="file" name="foto[]" multiple
+                            <span>Drag & drop atau klik</span>
+                            <input id="editInput" type="file" name="foto"
                                 class="absolute inset-0 opacity-0 cursor-pointer">
                         </div>
-                        <div id="editPreview" class="flex gap-2 mt-2 overflow-x-auto"></div>
+                        <div id="editPreview" class="mt-2"></div>
                     </div>
 
                     <!-- kolom input -->
@@ -198,11 +199,36 @@
             <p><strong>YouTube:</strong> <a id="detailURL" href="#" target="_blank"
                     class="text-blue-500 underline"></a></p>
             <div class="text-right mt-4">
-                <button onclick="closeModal('detailModal')"
+                <button type="button" onclick="closeModal('detailModal')"
                     class="bg-blue-400 text-white px-4 py-2 rounded">Tutup</button>
             </div>
         </div>
     </div>
+
+    <!-- ============ STYLE ============ -->
+    <style>
+        .modal {
+            display: none;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .drop-zone {
+            border: 2px dashed #cbd5e0;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .drop-zone.drag {
+            border-color: #3182ce;
+            background-color: #ebf8ff;
+        }
+    </style>
 
     <!-- ============ SCRIPT ============ -->
     <script>
@@ -230,26 +256,32 @@
             }));
 
             drop.addEventListener('drop', ev => {
-                input.files = ev.dataTransfer.files;
-                previewFiles(input.files, prev);
+                const files = ev.dataTransfer.files;
+                if (files.length > 0) {
+                    input.files = files;
+                    previewFiles(files, prev);
+                }
             });
             input.addEventListener('change', () => previewFiles(input.files, prev));
         }
 
         function previewFiles(files, container) {
             container.innerHTML = '';
-            [...files].forEach(f => {
-                if (!f.type.startsWith('image/')) return;
-                const rdr = new FileReader();
-                rdr.onload = e => {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.className = 'h-20 rounded';
-                    container.appendChild(img);
-                };
-                rdr.readAsDataURL(f);
-            });
+            if (files.length > 0) {
+                const file = files[0]; // Hanya ambil file pertama
+                if (file.type.startsWith('image/')) {
+                    const rdr = new FileReader();
+                    rdr.onload = e => {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'h-20 rounded';
+                        container.appendChild(img);
+                    };
+                    rdr.readAsDataURL(file);
+                }
+            }
         }
+
         document.addEventListener('DOMContentLoaded', () => {
             initDrag('addDrop', 'addInput', 'addPreview');
             initDrag('editDrop', 'editInput', 'editPreview');
@@ -271,11 +303,11 @@
         }
 
         function openEditModal(id) {
-            fetch(`/portfolio/show/${id}`)
+            fetch(`/portofolio/show/${id}`)
                 .then(r => r.json())
                 .then(d => {
                     const form = document.getElementById('editForm');
-                    form.action = `/portfolio/update/${id}`;
+                    form.action = `/portofolio/update/${id}`;
 
                     document.getElementById('edit_judul').value = d.judul_porto;
                     document.getElementById('edit_kategori').value = d.category_id;
@@ -284,7 +316,7 @@
 
                     const prev = document.getElementById('editPreview');
                     prev.innerHTML = d.photos.length ?
-                        d.photos.map(p => `<img src="/storage/${p.nama_foto}" class="h-20 rounded">`).join('') :
+                        `<img src="/${d.photos[0].nama_foto}" class="h-20 rounded">` :
                         '<span class="italic text-gray-400">No Image</span>';
 
                     document.getElementById('editModal').classList.add('open');
@@ -292,18 +324,17 @@
         }
 
         function openDetailModal(id) {
-            fetch(`/portfolio/show/${id}`)
+            fetch(`/portofolio/show/${id}`)
                 .then(r => r.json())
                 .then(d => {
                     document.getElementById('detailTitle').textContent = d.judul_porto;
-                    document.getElementById('detailCat').textContent = 'Kategori: ' + d.category_id;
+                    document.getElementById('detailCat').textContent = d.category ? 'Kategori: ' + d.category.nama_category : 'Kategori: -';
                     document.getElementById('detailDesc').textContent = d.ket_porto;
 
                     document.getElementById('detailImage').innerHTML =
                         d.photos.length ?
-                        d.photos.map(p => `<img src="/storage/${p.nama_foto}" class="w-full rounded mb-3">`).join('') :
+                        `<img src="/${d.photos[0].nama_foto}" class="w-full rounded mb-3">` :
                         '<div class="italic text-gray-400 mb-3">No Image</div>';
-
 
                     const link = document.getElementById('detailURL');
                     if (d.url_youtube) {

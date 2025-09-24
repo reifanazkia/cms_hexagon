@@ -4,97 +4,129 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Tampilkan semua berita.
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::with('fotos')->latest()->get();
         return view('news.index', compact('news'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     //
-    // }
-
-    /**
-     * Store a newly created resource in storage.
+     * Simpan berita baru.
      */
     public function store(Request $request)
     {
         $request->validate([
-            'category_id' => 'required|array',
-            'judul_news' => 'required|string|max:250',
-            'ket_news' => 'required|string|max:250',
+            'judul_news'   => 'required|string|max:255',
+            'ket_news'     => 'required|string',
+            'category_id'  => 'required|array',   // karena checkbox multiple
+            'category_id.*'=> 'string',
+            'foto'         => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
-        News::create([
-            'category_id' => implode(', ', $request->category_id),
-            'judul_news' => $request->judul_news,
-            'ket_news' => $request->ket_news,
+        // Gabungkan kategori array → string
+        $categories = implode(',', $request->category_id);
+
+        // Simpan data news
+        $news = News::create([
+            'judul_news'  => $request->judul_news,
+            'ket_news'    => $request->ket_news,
+            'category_id' => $categories,
         ]);
 
-        return redirect()->route('news.index')->with('success', 'Data berhasil disimpan');
+        // Simpan foto (jika ada)
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            if ($foto->isValid()) {
+                $filename = time() . '_' . uniqid() . '.' . $foto->getClientOriginalExtension();
+                $filePath = $foto->storeAs('news', $filename, 'public');
+
+                $news->fotos()->create([
+                    'nama_foto' => $filePath,
+                ]);
+            }
+        }
+
+        return redirect()->route('news.index')->with('success', 'Berita berhasil ditambahkan.');
     }
 
     /**
-     * Display the specified resource.
+     * Menampilkan detail berita.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        $news = News::findOrFail($id);
-        return response()->json([
-            'news_id'     => $news->news_id,
-            'category_id' => $news->category_id,
-            'judul_news'  => $news->judul_news,
-            'ket_news'    => $news->ket_news,
-        ]);
+        $news = News::with('fotos')->findOrFail($id);
+        return response()->json($news);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update berita.
      */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'category_id' => 'required|array',
-            'judul_news' => 'required|string|max:250',
-            'ket_news' => 'required|string|max:250',
+            'judul_news'   => 'required|string|max:255',
+            'ket_news'     => 'required|string',
+            'category_id'  => 'required|array',
+            'category_id.*'=> 'string',
+            'foto'         => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
-        $news = News::findOrFail($id);
+        $news = News::with('fotos')->findOrFail($id);
+
+        // Gabungkan kategori array → string
+        $categories = implode(',', $request->category_id);
+
         $news->update([
-            'category_id' => implode(', ', $request->category_id),
-            'judul_news' => $request->judul_news,
-            'ket_news' => $request->ket_news,
+            'judul_news'  => $request->judul_news,
+            'ket_news'    => $request->ket_news,
+            'category_id' => $categories,
         ]);
 
-        return redirect()->route('news.index')->with('success', 'Data berhasil diupdate');
+        // Jika ada foto baru, hapus lama & simpan baru
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama
+            foreach ($news->fotos as $foto) {
+                Storage::disk('public')->delete($foto->nama_foto);
+                $foto->delete();
+            }
+
+            // Simpan foto baru
+            $file = $request->file('foto');
+            if ($file->isValid()) {
+                $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $filePath = $file->storeAs('news', $filename, 'public');
+
+                $news->fotos()->create([
+                    'nama_foto' => $filePath,
+                ]);
+            }
+        }
+
+        return redirect()->route('news.index')->with('success', 'Berita berhasil diperbarui.');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Hapus berita.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $news = News::findOrFail($id);
+        $news = News::with('fotos')->findOrFail($id);
+
+        // Hapus semua foto dari storage & DB
+        foreach ($news->fotos as $foto) {
+            Storage::disk('public')->delete($foto->nama_foto);
+            $foto->delete();
+        }
+
         $news->delete();
 
-        return redirect()->route('news.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('news.index')->with('success', 'Berita berhasil dihapus.');
     }
 }

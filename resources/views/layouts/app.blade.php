@@ -45,7 +45,7 @@
                 <a href="/about/clients" class="block py-2 text-sm hover:bg-[#0c4cb2]">Our Clients</a>
             </div>
 
-            <a href="/portfolio" class="block px-5 py-2 hover:bg-[#0f59c3]"><i class="fas fa-briefcase mr-2"></i> Portfolio</a>
+            <a href="/portofolio" class="block px-5 py-2 hover:bg-[#0f59c3]"><i class="fas fa-briefcase mr-2"></i> Portfolio</a>
             <a href="/services" class="block px-5 py-2 hover:bg-[#0f59c3]"><i class="fas fa-tools mr-2"></i> Services</a>
             <a href="{{ route('pricing.index') }}" class="block px-5 py-2 hover:bg-[#0f59c3]"><i class="fas fa-tags mr-2"></i> Pricing</a>
             <a href="{{ route('detail-pricings.index') }}" class="block px-5 py-2 hover:bg-[#0f59c3]"><i class="fas fa-list-ul mr-2"></i> Detail Pricing</a>
