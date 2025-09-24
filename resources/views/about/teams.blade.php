@@ -37,7 +37,7 @@
                     @foreach ($teams as $member)
                         <tr>
                             <td class="px-6 py-4">
-                                <img src="{{ asset('storage/foto_team/' . $member->foto_orang) }}" alt="Photo"
+                                <img src="{{ asset('storage/' . $member->foto_orang) }}" alt="Photo"
                                     class="w-12 h-12 rounded-full object-cover">
                             </td>
                             <td class="px-6 py-4">{{ $member->nama_orang }}</td>
@@ -79,7 +79,7 @@
                                         <div id="editPreviewContainer{{ $member->id }}"
                                             class="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 overflow-hidden flex items-center justify-center text-gray-400 text-2xl">
                                             <img id="editPreviewImage{{ $member->id }}"
-                                                src="{{ asset('storage/foto_team/' . $member->foto_orang) }}" alt="Preview"
+                                                src="{{ asset('storage/' . $member->foto_orang) }}" alt="Preview"
                                                 class="object-contain w-full h-full" />
                                         </div>
                                     </div>

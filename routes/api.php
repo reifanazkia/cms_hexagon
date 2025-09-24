@@ -36,14 +36,9 @@ use App\Http\Controllers\AboutTeamController;
 use App\Http\Controllers\Api\ApiPricingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\MessagesController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
+// ======================= API PUBLIC ==========================
 Route::get('/teams', [ApiAboutTeamController::class, 'index']);
 Route::get('/teams/{id}', [ApiAboutTeamController::class, 'show']);
 Route::get('/careers', [ApiCareerController::class, 'index']);
@@ -72,9 +67,8 @@ Route::get('/vision-mission', [ApiVisionMissionController::class, 'index']);
 Route::get('/pricings', [ApiPricingController::class, 'index']);
 Route::get('/pricings/{id}', [ApiPricingController::class, 'show']);
 
-
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::prefix('profile')->group(function () {
+// ======================= API CRUD (tanpa sanctum) ==========================
+Route::prefix('profile')->group(function () {
     Route::patch('/', [ProfileSettingController::class, 'update'])->name('profile.update');
 });
 
@@ -181,6 +175,4 @@ Route::prefix('services')->group(function () {
 // Messages
 Route::prefix('message')->group(function () {
     Route::post('/send', [MessagesController::class, 'store'])->name('message.store');
-});
-
 });

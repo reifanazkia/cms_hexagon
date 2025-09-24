@@ -33,14 +33,11 @@ class AboutTeamController extends Controller
             'link_ig'    => 'nullable|string|max:255',
             'link_in'    => 'nullable|string|max:255',
             'link_fb'    => 'nullable|string|max:255',
-            'link_twt'  => 'nullable|url',
+            'link_twt'   => 'nullable|url',
         ]);
 
-        // simpan foto
-        $validated['foto_orang'] = basename(
-            $request->file('foto_orang')
-                    ->store('foto_team', 'public')
-        );
+        // simpan foto ke storage/app/public/foto_team
+        $validated['foto_orang'] = $request->file('foto_orang')->store('foto_team', 'public');
 
         AboutTeam::create($validated);
 
@@ -59,19 +56,16 @@ class AboutTeamController extends Controller
             'link_ig'    => 'nullable|string|max:255',
             'link_in'    => 'nullable|string|max:255',
             'link_fb'    => 'nullable|string|max:255',
-            'link_twt'  => 'nullable|url',
+            'link_twt'   => 'nullable|url',
         ]);
 
         /** ganti foto (jika di-upload lagi) */
         if ($request->hasFile('foto_orang')) {
             // hapus lama jika masih ada
-            if ($team->foto_orang && Storage::disk('public')->exists('foto_team/'.$team->foto_orang)) {
-                Storage::disk('public')->delete('foto_team/'.$team->foto_orang);
+            if ($team->foto_orang && Storage::disk('public')->exists($team->foto_orang)) {
+                Storage::disk('public')->delete($team->foto_orang);
             }
-            $validated['foto_orang'] = basename(
-                $request->file('foto_orang')
-                        ->store('foto_team', 'public')
-            );
+            $validated['foto_orang'] = $request->file('foto_orang')->store('foto_team', 'public');
         }
 
         $team->update($validated);
@@ -85,8 +79,8 @@ class AboutTeamController extends Controller
         $team = AboutTeam::findOrFail($id);
 
         // hapus file foto
-        if ($team->foto_orang && Storage::disk('public')->exists('foto_team/'.$team->foto_orang)) {
-            Storage::disk('public')->delete('foto_team/'.$team->foto_orang);
+        if ($team->foto_orang && Storage::disk('public')->exists($team->foto_orang)) {
+            Storage::disk('public')->delete($team->foto_orang);
         }
 
         $team->delete();
