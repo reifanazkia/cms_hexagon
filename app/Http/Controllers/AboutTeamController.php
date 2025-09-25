@@ -27,51 +27,56 @@ class AboutTeamController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'foto_orang' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'foto_orang' => 'required|image|mimes:jpg,jpeg,png,webp|max:5000',
             'nama_orang' => 'required|string|max:120',
             'jabatan'    => 'required|string|max:120',
-            'link_ig'    => 'nullable|string|max:255',
-            'link_in'    => 'nullable|string|max:255',
-            'link_fb'    => 'nullable|string|max:255',
-            'link_twt'   => 'nullable|url',
+            'link_ig'    => 'nullable',
+            'link_in'    => 'nullable',
+            'link_fb'    => 'nullable',
+            'link_twt'   => 'nullable',
         ]);
 
-        // simpan foto ke storage/app/public/foto_team
-        $validated['foto_orang'] = $request->file('foto_orang')->store('foto_team', 'public');
+        if ($request->hasFile('foto_orang')) {
+            $validated['foto_orang'] = $request->file('foto_orang')->store('foto_team', 'public');
+        }
 
         AboutTeam::create($validated);
 
         return back()->with('success', 'Anggota tim berhasil ditambahkan!');
     }
 
+
     /** UPDATE */
-    public function update(Request $request, $id)
-    {
-        $team = AboutTeam::findOrFail($id);
+   public function update(Request $request, $id)
+{
+    $team = AboutTeam::findOrFail($id);
 
-        $validated = $request->validate([
-            'foto_orang' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'nama_orang' => 'required|string|max:120',
-            'jabatan'    => 'required|string|max:120',
-            'link_ig'    => 'nullable|string|max:255',
-            'link_in'    => 'nullable|string|max:255',
-            'link_fb'    => 'nullable|string|max:255',
-            'link_twt'   => 'nullable|url',
-        ]);
+    $validated = $request->validate([
+        'foto_orang' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5000',
+        'nama_orang' => 'required|string|max:120',
+        'jabatan'    => 'required|string|max:120',
+        'link_ig'    => 'nullable',
+        'link_in'    => 'nullable',
+        'link_fb'    => 'nullable',
+        'link_twt'   => 'nullable',
+    ]);
 
-        /** ganti foto (jika di-upload lagi) */
-        if ($request->hasFile('foto_orang')) {
-            // hapus lama jika masih ada
-            if ($team->foto_orang && Storage::disk('public')->exists($team->foto_orang)) {
-                Storage::disk('public')->delete($team->foto_orang);
-            }
-            $validated['foto_orang'] = $request->file('foto_orang')->store('foto_team', 'public');
+    // Kalau ada foto baru, simpan dan hapus foto lama
+    if ($request->hasFile('foto_orang')) {
+        // Hapus foto lama
+        if ($team->foto_orang && Storage::disk('public')->exists($team->foto_orang)) {
+            Storage::disk('public')->delete($team->foto_orang);
         }
 
-        $team->update($validated);
-
-        return back()->with('success', 'Data anggota tim diperbarui!');
+        // Simpan foto baru
+        $validated['foto_orang'] = $request->file('foto_orang')->store('foto_team', 'public');
     }
+
+    // Update data
+    $team->update($validated);
+
+    return back()->with('success', 'Data anggota tim berhasil diperbarui!');
+}
 
     /** DELETE */
     public function destroy($id)

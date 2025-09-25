@@ -124,7 +124,7 @@
                                         </div>
                                         <div>
                                             <label class="block text-sm font-medium text-gray-700 mb-1">X</label>
-                                            <input type="text" name="link_team" value="{{ $member->link_team }}"
+                                            <input type="text" name="link_twt" value="{{ $member->link_twt }}"
                                                 class="w-full px-4 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" />
                                         </div>
                                     </div>
@@ -166,7 +166,7 @@
                 <div class="flex justify-center mb-6">
                     <div id="addPreviewContainer"
                         class="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 overflow-hidden flex items-center justify-center text-gray-400 text-2xl">
-                        <img id="addPreviewImage" src="{{ asset('images/preview-icon.png') }}" alt="Preview"
+                        <img id="addPreviewImage" src="#" alt="Preview"
                             class="object-contain w-full h-full hidden" />
                         <span id="addPlaceholderIcon"><i class="fas fa-image"></i></span>
                     </div>
@@ -214,8 +214,8 @@
                             class="w-full px-4 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" />
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Website / Team Link</label>
-                        <input type="text" name="link_team" placeholder="https://example.com/profile"
+                        <label class="block text-sm font-medium text-gray-700 mb-1">X</label>
+                        <input type="text" name="link_twt" placeholder="username"
                             class="w-full px-4 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" />
                     </div>
                 </div>
@@ -235,7 +235,6 @@
     </div>
 
     <!-- Scripts -->
-   <!-- Script Preview & SweetAlert -->
     <script>
         function openEditModal(id) {
             const modal = document.getElementById('editTeamModal' + id);

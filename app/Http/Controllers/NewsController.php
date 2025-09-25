@@ -27,7 +27,7 @@ class NewsController extends Controller
             'ket_news'     => 'required|string',
             'category_id'  => 'required|array',   // karena checkbox multiple
             'category_id.*'=> 'string',
-            'foto'         => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'foto'         => 'nullable|image|mimes:jpg,jpeg,png,gif|max:5000',
         ]);
 
         // Gabungkan kategori array → string
@@ -75,7 +75,7 @@ class NewsController extends Controller
             'ket_news'     => 'required|string',
             'category_id'  => 'required|array',
             'category_id.*'=> 'string',
-            'foto'         => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'foto'         => 'nullable|image|mimes:jpg,jpeg,png,gif|max:5000',
         ]);
 
         $news = News::with('fotos')->findOrFail($id);
