@@ -52,7 +52,8 @@
                                 </button>
 
                                 <!-- Delete dengan SweetAlert -->
-                                <form id="deleteForm{{ $client->id }}" action="{{ route('clients.destroy', $client->id) }}" method="POST" class="inline">
+                                <form id="deleteForm{{ $client->id }}"
+                                    action="{{ route('clients.destroy', $client->id) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" onclick="confirmDelete({{ $client->id }})"
@@ -80,12 +81,14 @@
                                     @method('PUT')
 
                                     <div class="flex justify-center mb-6">
-                                        <div class="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 overflow-hidden">
+                                        <div
+                                            class="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 overflow-hidden">
                                             <img id="editPreviewImage{{ $client->id }}"
-                                                src="{{ asset('storage/foto_client/' . $client->foto_client) }}" alt="Preview"
+                                                src="{{ asset('storage/' . $client->foto_client) }}" alt="Preview"
                                                 class="object-contain w-full h-full" />
                                         </div>
                                     </div>
+
 
                                     <div class="flex items-center gap-2 mb-5">
                                         <label
@@ -214,61 +217,60 @@
     </div>
 
     <!-- Scripts -->
-   <!-- SweetAlert2 CDN -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    function openEditModal(id) {
-        const modal = document.getElementById('editClientModal' + id);
-        if (modal) modal.classList.remove('hidden');
-    }
-
-    function previewEditImage(e, id) {
-        const f = e.target.files[0];
-        if (f && f.type.startsWith('image/')) {
-            document.getElementById('editPreviewImage' + id).src = URL.createObjectURL(f);
-            document.getElementById('editFileName' + id).textContent = f.name;
+    <script>
+        function openEditModal(id) {
+            const modal = document.getElementById('editClientModal' + id);
+            if (modal) modal.classList.remove('hidden');
         }
-    }
 
-    function previewAddImage(e) {
-        const f = e.target.files[0];
-        if (f && f.type.startsWith('image/')) {
-            document.getElementById('addPreviewImage').src = URL.createObjectURL(f);
-            document.getElementById('addPreviewImage').classList.remove('hidden');
-            document.getElementById('addPlaceholderIcon').classList.add('hidden');
-            document.getElementById('addFileName').textContent = f.name;
-        }
-    }
-
-    // SweetAlert untuk konfirmasi hapus
-    function confirmDelete(id) {
-        Swal.fire({
-            title: 'Yakin ingin menghapus?',
-            text: 'Data ini tidak dapat dikembalikan!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Ya, hapus!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('deleteForm' + id).submit();
+        function previewEditImage(e, id) {
+            const f = e.target.files[0];
+            if (f && f.type.startsWith('image/')) {
+                document.getElementById('editPreviewImage' + id).src = URL.createObjectURL(f);
+                document.getElementById('editFileName' + id).textContent = f.name;
             }
-        });
-    }
+        }
 
-    // Notifikasi sukses dari session
-    @if (session('success'))
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: '{{ session('success') }}',
-            showConfirmButton: false,
-            timer: 2000
-        });
-    @endif
-</script>
+        function previewAddImage(e) {
+            const f = e.target.files[0];
+            if (f && f.type.startsWith('image/')) {
+                document.getElementById('addPreviewImage').src = URL.createObjectURL(f);
+                document.getElementById('addPreviewImage').classList.remove('hidden');
+                document.getElementById('addPlaceholderIcon').classList.add('hidden');
+                document.getElementById('addFileName').textContent = f.name;
+            }
+        }
 
+        // SweetAlert untuk konfirmasi hapus
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Yakin ingin menghapus?',
+                text: 'Data ini tidak dapat dikembalikan!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('deleteForm' + id).submit();
+                }
+            });
+        }
+
+        // Notifikasi sukses dari session
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        @endif
+    </script>
 @endsection

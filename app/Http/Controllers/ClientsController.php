@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Clients;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ClientsController extends Controller
 {
@@ -28,18 +28,13 @@ class ClientsController extends Controller
         $file = $request->file('foto_client');
         $fileName = Str::random(20) . '.' . $file->extension();
 
-        // simpan file langsung ke public/storage/foto_client
-        $destination = public_path('storage/foto_client');
-        if (!File::exists($destination)) {
-            File::makeDirectory($destination, 0755, true);
-        }
-
-        $file->move($destination, $fileName);
+        // Simpan ke storage/app/public/foto_client
+        $path = $file->storeAs('foto_client', $fileName, 'public');
 
         Clients::create([
             'name' => $request->name,
             'status' => $request->status,
-            'foto_client' => $fileName,
+            'foto_client' => $path, // simpan path relative ke storage/public
         ]);
 
         return redirect()->back()->with('success', 'Client berhasil ditambahkan');
@@ -55,23 +50,17 @@ class ClientsController extends Controller
         ]);
 
         if ($request->hasFile('foto_client')) {
-            // Hapus file lama
-            $oldFile = public_path('storage/foto_client/' . $client->foto_client);
-            if (File::exists($oldFile)) {
-                File::delete($oldFile);
+            // Hapus file lama kalau ada
+            if ($client->foto_client && Storage::disk('public')->exists($client->foto_client)) {
+                Storage::disk('public')->delete($client->foto_client);
             }
 
             // Simpan file baru
             $file = $request->file('foto_client');
             $fileName = Str::random(20) . '.' . $file->extension();
+            $path = $file->storeAs('foto_client', $fileName, 'public');
 
-            $destination = public_path('storage/foto_client');
-            if (!File::exists($destination)) {
-                File::makeDirectory($destination, 0755, true);
-            }
-
-            $file->move($destination, $fileName);
-            $validated['foto_client'] = $fileName;
+            $validated['foto_client'] = $path;
         }
 
         $client->update($validated);
@@ -82,9 +71,8 @@ class ClientsController extends Controller
     /** Hapus client. */
     public function destroy(Clients $client)
     {
-        $file = public_path('storage/foto_client/' . $client->foto_client);
-        if (File::exists($file)) {
-            File::delete($file);
+        if ($client->foto_client && Storage::disk('public')->exists($client->foto_client)) {
+            Storage::disk('public')->delete($client->foto_client);
         }
 
         $client->delete();

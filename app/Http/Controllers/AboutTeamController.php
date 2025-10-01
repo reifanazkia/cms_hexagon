@@ -59,7 +59,7 @@ class AboutTeamController extends Controller
         'link_in'    => 'nullable',
         'link_fb'    => 'nullable',
         'link_twt'   => 'nullable',
-    ]);
+    ]); 
 
     // Kalau ada foto baru, simpan dan hapus foto lama
     if ($request->hasFile('foto_orang')) {

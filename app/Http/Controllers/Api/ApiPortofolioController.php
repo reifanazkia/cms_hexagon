@@ -10,25 +10,21 @@ class ApiPortofolioController extends Controller
 {
     public function index()
     {
-        $porto = Portofolio::all();
+        $porto = Portofolio::with('photos')->get();
 
         return response()->json([
-
             'status' => 'success',
             'data' => $porto
-
         ]);
     }
 
     public function show($id)
     {
-        $porto = Portofolio::find($id);
+        $porto = Portofolio::with('photos')->find($id);
 
         return response()->json([
-
             'status' => 'success',
             'data' => $porto
-
         ]);
     }
 }

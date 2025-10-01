@@ -10,7 +10,7 @@ class ApiNewsController extends Controller
 {
     public function index()
     {
-        $news = News::all();
+        $news = News::with('fotos')->get();
 
         return response()->json([
 
@@ -23,7 +23,7 @@ class ApiNewsController extends Controller
 
     public function show($id)
     {
-        $news = News::find($id);
+        $news = News::with('fotos')->find($id);
 
         return response()->json([
 
